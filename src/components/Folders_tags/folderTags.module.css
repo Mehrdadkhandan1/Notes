@@ -1,0 +1,49 @@
+.foldersTags {
+    margin-top: 16px;
+}
+
+.titleAndAdd {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.listItems {
+    padding-left: 0.5rem;
+}
+
+.listItems ul {
+    list-style: none;
+    margin-top: 0.75rem;
+}
+
+.listItems ul li {
+    cursor: pointer;
+    display: flex;
+    color: #fff;
+    font-size: 0.9rem;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.listItems ul li svg {
+    fill: #fff;
+    font-size: 1rem;
+}
+
+.aciveItem {
+    width: 75%;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    background-color: #3E3F1C;
+}
+
+.aciveItem span {
+    color: #FFC812;
+    font-weight: bold;
+}
+.aciveItem svg {
+    fill: #FFC812 !important;
+}
