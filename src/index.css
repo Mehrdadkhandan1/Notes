@@ -1,9 +1,18 @@
 /* وارد کردن فونت aleo */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
 @font-face {
     font-family: aleo;
     src: url(./fonts/Aleo-VariableFont_wght.ttf);
 }
+
 
 html,
 body,
@@ -21,24 +30,22 @@ body,
     margin: auto;
 }
 
-* {
-    box-sizing: border-box;
-
+.layout {
+    display: flex;
 }
 
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-li,
-ul {
-    margin: 0;
-    padding: 0;
+.main-note {
+    padding: 1rem 0;
+    width: 60%;
+    max-width: 700px;
 }
 
 html {
     font-size: 16px;
+}
+
+@media screen and (max-width: 960px) {
+    html {
+        font-size: 14px;
+    }
 }

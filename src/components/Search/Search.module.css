@@ -1,0 +1,28 @@
+.search{
+    display: flex;
+    background-color: #262626;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    width: 40%;
+    align-items: center;
+    gap: 0.5rem;
+}
+.search label{
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+}
+.search input{
+    height: 100%;
+    flex-grow: 10;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    background-color: transparent;
+    color: #BEBEBE;
+}
+.search input::placeholder{
+    font-family: aleo;
+    color: #BEBEBE;
+}
