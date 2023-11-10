@@ -1,0 +1,47 @@
+.addNote {
+    background-color: #1B1D1B;
+    width: 30%;
+    min-height: 50%;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.headerAddNote {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.closeWindow {
+    font-size: 1.5rem;
+}
+
+.addNote h3 {
+    margin: 0;
+    color: #FFC812;
+}
+
+.formData {
+    padding: 0.25rem 0.75rem;
+}
+
+.formData form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.textArea{
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+.textArea textarea{
+    outline: 0;
+    border: 0;
+    border: 1px solid #bebebe;
+    background-color: transparent;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    resize: none;
+}

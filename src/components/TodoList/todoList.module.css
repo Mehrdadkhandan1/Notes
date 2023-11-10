@@ -1,0 +1,140 @@
+.todoList {
+    padding: 1rem;
+    width: 25%;
+    margin-left: 1rem;
+    border-left: 1px solid #fff;
+    height: 100%;
+    overflow: scroll;
+}
+
+.headerTodo {
+    gap: 0 0.5rem;
+    color: #FFC812;
+    align-items: center;
+    font-size: 1.5rem;
+    display: flex;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+    border-bottom: 1px solid #fff;
+
+}
+
+.iconTodo,
+h4 {
+    display: flex;
+    align-items: center;
+    gap: 0 0.5rem;
+
+}
+
+.iconTodo svg {
+    fill: #FFC812;
+    width: 1.5rem;
+}
+
+
+
+.editBtn {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 1.5rem;
+}
+
+.todos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.todo {
+    padding: 0 0.5rem ;
+    background-color: #262626;
+    border-radius: 0.5rem;
+
+}
+
+.todoBox {
+    display: grid;
+    grid-template-columns: 1.5rem auto 1rem;
+    padding: 1rem 0;
+    gap: 0.5rem;
+}
+
+.todoBox{
+    align-items: center;
+}
+.doneSection {
+    place-items: center;
+    border: 2px solid #BEBEBE;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    cursor: pointer;
+}
+
+.doneSection svg {
+    width: 0.75rem;
+    height: 0.75rem;
+}
+
+
+.linkBtn {
+    display: flex;
+    align-items: center;
+    width: 1rem;
+}
+
+.deleteTodo {
+    padding: 0.5rem;
+    background-color: #491212;
+    color: #D83737;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    outline: 0;
+    border: 0;
+    border-radius: 0.25rem;
+}
+
+.deleteTodo svg {
+    font-size: 1rem;
+}
+
+.actionBtn {
+    height: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    transition: all ease-in-out 0.4s;
+    background-color: #262626;
+    overflow: hidden;
+
+
+}
+
+.hsaOpen {
+    height: 3.5rem;
+    padding: 1rem 0 0.5rem 0;
+    border-top: 1px solid #fff;
+}
+
+.editTodo {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: transparent;
+    color: #BEBEBE;
+    outline: 0;
+    border: 0;
+}
+
+.editTodo svg {
+    width: 1rem;
+    height: 1rem;
+}

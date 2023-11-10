@@ -1,0 +1,47 @@
+.notesRow {
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem ;
+}
+
+.noteRow{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+.note{
+    padding: 0 0.5rem;
+    width: 95%;
+}
+.titleDate{
+    display: flex;    
+    justify-content: space-between;
+}
+.titleDate h4 {
+color: #000;
+font-weight: bold;
+
+}
+.titleDate span{
+    color:#3E3F1C ;
+    padding-right: 0.25rem;
+    font-size: 0.5rem;  
+    display: grid;
+    place-items: center;
+}
+.noteText{
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    word-break: break-all;
+}
+
+.deleteNote{
+    display: grid;
+    place-items: center;
+    width: 5%;
+    font-size: 1rem;
+    cursor: pointer;
+}

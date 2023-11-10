@@ -5,7 +5,6 @@
     column-gap: 0.75rem;
     row-gap: 0.75rem;
     justify-content: center;
-    height: 100%;
     padding-bottom: 0.75rem;
 }
 
@@ -36,11 +35,15 @@
 }
 .noteTitle svg{
     transform: translateY(-100px);
-    opacity: 1;
+    
     color: #474747;
-    transition: all ease-in-out 0.4s;
+    transition: all ease-in-out 0.2s;
 }
-
+.showIcon svg {
+    cursor: pointer;
+    transform: translateY(0);
+    
+}
 .noteDate {
     font-size: 0.5rem;
     padding: 0 0.5rem;
@@ -60,5 +63,24 @@
     .noteTitle {
         padding: 0.5rem;
     }
+    
+}
+@media screen and (max-width: 960px) {
+    .note {
+        height: 120px;
+        padding-bottom: 0.5rem;
+    }
+
+    .noteTitle {
+        padding: 0.5rem;
+    }
+    
+}
+@media screen and (max-width: 768px) {
+    .note {
+        height: 110px;
+        padding-bottom: 0.5rem; 
+    }
+
     
 }

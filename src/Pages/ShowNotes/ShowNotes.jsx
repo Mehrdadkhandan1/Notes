@@ -9,6 +9,7 @@ import { PiRowsLight } from 'react-icons/pi'
 import { BiSortUp, BiSortDown } from 'react-icons/bi'
 import { MdOutlinePostAdd } from 'react-icons/md'
 import NotesBox from '../../components/NoteBox/NotesBox'
+import NotesRow from '../../components/NoteRow/NotesRow'
 // 
 
 const title = 'All Notes'
@@ -47,10 +48,10 @@ const ShowNotes = () => {
         </div>
       </header>
 
-        {/* اسم فولدر */}
-        <h3>{title}</h3>
-        <NotesBox />
-
+      {/* اسم فولدر */}
+      <h3>{title}</h3>
+      <NotesBox />
+      {/* <NotesRow /> */}
     </main>
   )
 }

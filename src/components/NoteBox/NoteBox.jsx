@@ -1,16 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from './noteBoxs.module.css'
 const text = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde totam exercitationem nisi, voluptates commodiametid nulla doloruminventore accusamus magnam fugiat officiis laudantium, laboriosam repellendus eligendi itaque enim fuga.`
-const maxLength = 110
-const truncatedText = text.length > maxLength ? text.slice(0, maxLength) + " ..." : text;
+
 import { RiDeleteBinLine } from 'react-icons/ri'
+import { sliceText } from '../../tools/functions'
 const NoteBox = () => {
+    const [deleteIcon, setDeleteIcon] = useState(false)
     return (
-// mouseOVer اضافه کن
-        <div  className={style.note}>
+        // mouseOVer اضافه کن
+        <div onMouseOver={() => {
+            setDeleteIcon(true)
+        }} onMouseOut={() => {
+            setDeleteIcon(false)
+        }} className={`${style.note} ${deleteIcon ? style.showIcon : ''}`}>
             {/* عنوان یادداشت */}
             <div className={style.noteTitle}>
-                Title
+                <h4>
+                    Title
+                </h4>
                 <RiDeleteBinLine />
             </div>
             {/* تاریخ تولید یادداشت */}
@@ -19,7 +26,7 @@ const NoteBox = () => {
             </span>
             {/* متن یادداشت */}
             <p className={style.noteText}>
-                {truncatedText}
+                {sliceText(text)}
             </p>
 
         </div>

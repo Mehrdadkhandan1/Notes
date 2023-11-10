@@ -1,0 +1,66 @@
+.dropDownInput {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem 0;
+}
+.dropDownInput> label {
+    font-weight: bold;
+}
+.react-select__indicator-separator{
+    display: none;
+}
+
+.dropDownInput .react-select__control {
+    background-color: transparent;
+    font-size: 0.75rem;
+    border-color: inherit;
+    border: 1px solid #bebebe;
+}
+
+.dropDownInput .react-select__control:hover {
+    border-color: inherit;
+}
+
+.dropDownInput .react-select__control--is-focused {
+    border-color: inherit;
+    outline: 0;
+    box-shadow: none;
+}
+
+.dropDownInput .react-select__value-container {
+    gap: 0 0.25rem;
+}
+
+.dropDownInput .react-select__multi-value {
+    width: 50px;
+    background-color: transparent;
+    border-right: 1px solid #fff;
+    transition: all ease-in-out 0.2s;
+    box-shadow: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.25rem;
+    margin: 2px;
+}
+
+.dropDownInput .react-select__multi-value:hover {
+    background-color: #9b9a9a;
+}
+
+.react-select__multi-value__label {
+    color: #bebebe !important;
+
+}
+
+.dropDownInput .react-select__multi-value__remove:hover {
+    background-color: transparent;
+    cursor: pointer;
+    color: #fff;
+}
+
+.dropDownInput .react-select__menu,
+.dropDownInput .react-select__menu:hover {
+    background-color: #262626;
+    font-size: 0.75rem;
+}
