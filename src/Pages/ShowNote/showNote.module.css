@@ -1,0 +1,44 @@
+.showNote {
+    transition: all ease-in-out 0.4s;
+    width: 100%;
+    display: flex;
+
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editBtn {
+    display: flex;
+    align-items: center;
+}
+
+.editBtn svg {
+    font-size: 1.25rem;
+
+}
+
+.note {
+    width: 70%;
+    padding: 1rem 0.75rem;
+}
+
+.noteData {
+    margin-top: 1.5rem;
+}
+
+.noteData h2 {
+    color: #FFC812;
+}
+
+.noteData p {
+    margin-top: 1rem;
+    word-break: keep-all;
+}
+
+.editor {
+    margin-top: 1rem;
+}

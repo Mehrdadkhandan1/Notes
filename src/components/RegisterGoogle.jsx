@@ -1,20 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FcGoogle } from "react-icons/fc";
 
-const SubmitBtn = ({ children }) => {
+const RegisterGoogle = () => {
     return (
-        <BtnSubmitted >
-            <button > {children} </button>
-        </BtnSubmitted>
+        <BtnRegister>
+            <button>
+                <FcGoogle />
+                with Google
+            </button>
+        </BtnRegister>
+
     )
 }
 
-const BtnSubmitted = styled.div`
-    margin-top: 0.25rem;
+export default RegisterGoogle
 
-    button{
+const BtnRegister = styled.div`
+ margin-top: 0.25rem;
+  button{
     font-weight: 700;
-    background-color:#FFC812;
+    background-color:#bebebe;
     border-radius: 0.25rem;
     font-size: 1rem;
     gap: 0.5rem;
@@ -26,6 +32,5 @@ const BtnSubmitted = styled.div`
     outline: 0;
     border: 0;
     padding:  0.5rem 1rem;}
-`
 
-export default SubmitBtn
+`

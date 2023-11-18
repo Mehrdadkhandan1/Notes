@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // استایل
 import style from './showNotes.module.css'
 
@@ -10,11 +10,13 @@ import { BiSortUp, BiSortDown } from 'react-icons/bi'
 import { MdOutlinePostAdd } from 'react-icons/md'
 import NotesBox from '../../components/NoteBox/NotesBox'
 import NotesRow from '../../components/NoteRow/NotesRow'
+import { Link } from 'react-router-dom'
 // 
 
 const title = 'All Notes'
 
 const ShowNotes = () => {
+  const [showRow, setShowRow] = useState(false)
   return (
     <main className={style.showNotes}>
       {/* هدر  */}
@@ -25,11 +27,12 @@ const ShowNotes = () => {
         {/* دکمه ها  */}
         <div className={style.actionBtn}>
           {/* نمایش به صورت باکسی یا ردیفی */}
-          <div className={style.actionIcon}>
+          <div onClick={()=>{
+            setShowRow(prev=>!prev)
+          }} className={style.actionIcon}>
             {/* باکسی */}
-            <HiOutlineSquares2X2 />
-            {/* ردیفی */}
-            {/* <PiRowsLight /> */}
+            {showRow ? <HiOutlineSquares2X2 /> : <PiRowsLight />}
+
           </div>
 
           {/* مرتب سازی بر اساس زمان قدیم به جدید یا جدید به قدیم */}
@@ -42,16 +45,18 @@ const ShowNotes = () => {
           {/* اضافه کردن نوت */}
           <div className={style.actionIcon}>
             {/* آیکون اضافه کردن نوت */}
-            <MdOutlinePostAdd />
-
+            <Link to='addnote'>
+              <MdOutlinePostAdd />
+            </Link>
           </div>
         </div>
       </header>
 
       {/* اسم فولدر */}
       <h3>{title}</h3>
-      <NotesBox />
-      {/* <NotesRow /> */}
+      {showRow ? <NotesRow /> : <NotesBox />}
+
+      {/*  */}
     </main>
   )
 }

@@ -4,10 +4,69 @@
     flex-direction: column;
     gap: 0.5rem 0;
 }
-.dropDownInput> label {
+
+.dropDownInput .react-select__option {
+    font-size: 0.75rem;
+}
+
+.dropDownInput .react-select__menu-list {
+    padding: 0.5rem 0.25rem;
+}
+
+.dropDownInput .react-select__option {
+    color: #fff;
+    background-color: #262626;
+    cursor: pointer;
+
+    border-radius: 0.25rem;
+    border-bottom: 1px solid #fff;
+    box-shadow: 0;
+}
+
+.dropDownInput .react-select__option:hover {
+    color: #878787;
+}
+
+
+@media screen and (max-width: 968px) {
+    .dropDownInput .react-select__control {
+        min-height: 1.5rem !important;
+    }
+
+}
+
+@media screen and (min-width: 1080px) {
+    .dropDownInput .react-select__indicator {
+        padding: 0.5rem !important;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .dropDownInput .react-select__indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dropDownInput .react-select__indicator,
+    .dropDownInput .react-select__indicator svg {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+}
+
+
+.react-select__indicator {
+    padding: 0.25rem !important;
+}
+
+.dropDownInput>label {
     font-weight: bold;
 }
-.react-select__indicator-separator{
+
+.react-select__indicator-separator {
     display: none;
 }
 
@@ -16,6 +75,8 @@
     font-size: 0.75rem;
     border-color: inherit;
     border: 1px solid #bebebe;
+    height: 100%;
+    min-height: inherit;
 }
 
 .dropDownInput .react-select__control:hover {

@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './todoList.module.css'
 import Todo from './Todo'
+import { Link } from 'react-router-dom'
 
 
 const TodoList = () => {
@@ -15,13 +16,13 @@ const TodoList = () => {
                     <h4>Todo List</h4>
                 </div>
 
-                <div className={style.editBtn}>
+                <Link to='addtodo'  className={style.editBtn}>
                     {/* آیکون ادد تودو */}
                     <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M11.7349 3.53021H3.38553C2.75285 3.53021 2.14608 3.78154 1.69871 4.22892C1.25133 4.67629 1 5.28306 1 5.91574V22.6144C1 23.2471 1.25133 23.8539 1.69871 24.3013C2.14608 24.7486 2.75285 25 3.38553 25H20.0842C20.7169 25 21.3237 24.7486 21.7711 24.3013C22.2184 23.8539 22.4698 23.2471 22.4698 22.6144V14.2651" stroke="#BEBEBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M20.6806 1.74109C21.1552 1.26658 21.7987 1 22.4698 1C23.1409 1 23.7844 1.26658 24.2589 1.74109C24.7335 2.2156 25 2.85918 25 3.53024C25 4.2013 24.7335 4.84487 24.2589 5.31938L12.9277 16.6506L8.15662 17.8434L9.34938 13.0724L20.6806 1.74109Z" stroke="#BEBEBE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
-                </div>
+                </Link>
             </div>
             <div className={style.todos}>
                 <Todo />

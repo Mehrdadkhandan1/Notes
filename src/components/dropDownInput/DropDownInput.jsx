@@ -4,24 +4,10 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
 import { dataOption } from './data'
-const options = [
-    { value: `chocolate`, label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' }
-]
 
 
 
-
-
-
-
-
-
-
-
-
-const DropDownInput = ({labelInput}) => {
+const DropDownInput = ({ labelInput,isMulti }) => {
     const [option, setOption] = useState([])
     useEffect(() => {
         const opt = []
@@ -36,7 +22,7 @@ const DropDownInput = ({labelInput}) => {
     return (
         <div className='dropDownInput'>
             <label htmlFor="">
-                    {labelInput}
+                {labelInput}
             </label>
             <Select
                 onChange={(e) => {
@@ -44,9 +30,9 @@ const DropDownInput = ({labelInput}) => {
                 }}
                 className="react-select-container"
                 classNamePrefix="react-select"
-                closeMenuOnSelect={false}
+                closeMenuOnSelect={true}
                 components={animatedComponents}
-                isMulti
+                isMulti={isMulti ? true : false}
                 options={option}
             />
         </div>

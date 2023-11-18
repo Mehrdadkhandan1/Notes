@@ -1,0 +1,163 @@
+.register {
+    width: 50%;
+    padding: 0.5rem 1rem;
+    transition: all ease-in-out 0.4s;
+
+}
+
+
+
+.register header h3 {
+    font-size: 1.75rem;
+    color: #FFC812;
+    margin: 0;
+}
+
+
+.parentForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parentForm form {
+    width: 80%;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.photoProfile {
+    border: 1px solid #bebebe;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+    padding: 1.25rem 1.5rem;
+}
+
+
+.photoProfile img {
+    width: 95px;
+    height: 95px;
+}
+
+
+
+.photoProfile input {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.iconAddPhoto {
+    position: absolute;
+    right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: 0;
+    border: 0;
+    bottom: 0.25rem;
+    background-color: #bebebe;
+    border-radius: 50%;
+    color: #1B1D1C;
+    padding: 0.25rem;
+    font-size: 1.25rem;
+
+}
+
+.inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.forgetAndRememeber {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.forgetAndRememeber p {
+    font-size: 0.75rem;
+    text-decoration: underline;
+
+}
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.rememberMe label {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 2px;
+    border: 1px solid #bebebe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.rememberMe input {
+    background-color: transparent;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    left: 0;
+    right: 0;
+}
+
+
+.btnSubmit {
+    width: 80%;
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+@media screen and (max-width:768px) {
+    .register {
+
+        padding: 1rem 1.25rem;
+    }
+
+    .signup {
+        margin-top: 4rem;
+    }
+
+    .photoProfile {
+        padding: 1.5rem 1.5rem;
+
+    }
+
+    .photoProfile img {
+        width: 85px;
+        height: 85px;
+    }
+
+    .iconAddPhoto {
+        right: 1rem;
+        bottom: 0.5rem;
+        font-size: 1.5rem;
+
+
+    }
+}

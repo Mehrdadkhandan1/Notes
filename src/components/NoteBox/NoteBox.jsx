@@ -4,6 +4,7 @@ const text = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde tota
 
 import { RiDeleteBinLine } from 'react-icons/ri'
 import { sliceText } from '../../tools/functions'
+import { Link } from 'react-router-dom'
 const NoteBox = () => {
     const [deleteIcon, setDeleteIcon] = useState(false)
     return (
@@ -16,7 +17,9 @@ const NoteBox = () => {
             {/* عنوان یادداشت */}
             <div className={style.noteTitle}>
                 <h4>
-                    Title
+                    <Link to='showNote'>
+                        Title
+                    </Link>
                 </h4>
                 <RiDeleteBinLine />
             </div>
