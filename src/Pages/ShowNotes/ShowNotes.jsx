@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 // استایل
 import style from './showNotes.module.css'
 
@@ -10,25 +10,38 @@ import { BiSortUp, BiSortDown } from 'react-icons/bi'
 import { MdOutlinePostAdd } from 'react-icons/md'
 import NotesBox from '../../components/NoteBox/NotesBox'
 import NotesRow from '../../components/NoteRow/NotesRow'
-import { Link } from 'react-router-dom'
-// 
+import { Link, useParams } from 'react-router-dom'
+import { RiMenu2Line } from "react-icons/ri";
 
-const title = 'All Notes'
-
-const ShowNotes = () => {
+// وکتور 
+import addNoteVector from './../../picture/addNote.svg'
+import { ContextNote } from '../../context/context'
+const title = 'All notes'
+const ShowNotes = ({ setOpenNav }) => {
+  const { state, dispatch } = useContext(ContextNote)
   const [showRow, setShowRow] = useState(false)
+
+  const notes = state.notes
+
   return (
     <main className={style.showNotes}>
       {/* هدر  */}
       <header className={style.headerNotes}>
+        <div className={style.menuNav}>
+          {/* toggle navbar */}
+          <RiMenu2Line onClick={() => {
+            setOpenNav()
+          }} />
+
+        </div>
         {/* سرچ باکس */}
         <Search />
 
         {/* دکمه ها  */}
         <div className={style.actionBtn}>
           {/* نمایش به صورت باکسی یا ردیفی */}
-          <div onClick={()=>{
-            setShowRow(prev=>!prev)
+          <div onClick={() => {
+            setShowRow(prev => !prev)
           }} className={style.actionIcon}>
             {/* باکسی */}
             {showRow ? <HiOutlineSquares2X2 /> : <PiRowsLight />}
@@ -54,8 +67,14 @@ const ShowNotes = () => {
 
       {/* اسم فولدر */}
       <h3>{title}</h3>
-      {showRow ? <NotesRow /> : <NotesBox />}
 
+      {showRow ? <NotesRow data={notes} /> : <NotesBox data={notes} />}
+
+
+      {!Object.keys(notes).length && <div className={style.vectorAddNote}>
+        <img src={addNoteVector} alt="Add note" />
+        <p>You have no note, you can add with <MdOutlinePostAdd /> </p>
+      </div>}
       {/*  */}
     </main>
   )

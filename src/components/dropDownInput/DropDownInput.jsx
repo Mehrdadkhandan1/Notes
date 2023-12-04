@@ -3,22 +3,11 @@ import './dropDownInput.css'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated';
 const animatedComponents = makeAnimated();
-import { dataOption } from './data'
 
 
 
-const DropDownInput = ({ labelInput,isMulti }) => {
-    const [option, setOption] = useState([])
-    useEffect(() => {
-        const opt = []
-        dataOption.map(option => {
-            opt.push({ value: option.id, label: option.nameFolder })
-        })
-        setOption(opt)
-    }, [])
-
-
-
+const DropDownInput = ({ labelInput, isMulti, value, changeValue, type }) => {
+    console.log(value)
     return (
         <div className='dropDownInput'>
             <label htmlFor="">
@@ -26,14 +15,22 @@ const DropDownInput = ({ labelInput,isMulti }) => {
             </label>
             <Select
                 onChange={(e) => {
-                    console.log(e)
+                    if (isMulti) {
+                        console.log('s')
+                        const foldersId = []
+                        e.map(id => foldersId.push(id.value))
+                        changeValue(type, foldersId)
+                    }
+                    else {
+                        changeValue(type, e.value)
+                    }
                 }}
                 className="react-select-container"
                 classNamePrefix="react-select"
                 closeMenuOnSelect={true}
                 components={animatedComponents}
                 isMulti={isMulti ? true : false}
-                options={option}
+                options={value}
             />
         </div>
     )

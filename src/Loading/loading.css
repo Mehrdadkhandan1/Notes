@@ -1,0 +1,23 @@
+.p-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vh;
+    height: 100vh;
+    background-color: #0d0e0d2b;
+}
+
+.p-loader .loader{
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+.p-loader .loader span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}

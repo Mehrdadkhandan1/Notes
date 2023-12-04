@@ -6,25 +6,28 @@ import React from 'react'
 
 // استایل 
 import style from './folderTags.module.css'
-const Folders_tags = ({ title, icon }) => {
-    const nameFolders = ['learn', 'notes', 'notes OK']
+import { Link } from 'react-router-dom'
+const Folders_tags = ({ title, icon, data }) => {
     return (
         <div className={style.foldersTags}>
             {/* فولدر + ایکون ادد */}
             <div className={style.titleAndAdd}>
                 <p> {title} </p>
-                <span>+</span>
+                <Link to={title === 'folders' ? 'addfolder' : 'addtag'}>+</Link>
             </div>
             {/* لیست فولدر ها */}
             <div className={`${style.listItems}`}>
                 <ul>
 
-                    {nameFolders.map(folder => {
+                    {data && data.map(({ _id, name, title }) => {
                         // کلاس اکتیو داره برای تغیر استایل 
-                        return <li>
+                        return <li key={_id}>
                             {/* آیکون فولدر */}
                             {icon}
-                            <span>{folder}</span>
+                            <Link>
+                                {name && name}
+                                {title && title}
+                            </Link>
                         </li>
                     })}
                 </ul>

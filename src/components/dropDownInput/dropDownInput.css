@@ -70,6 +70,10 @@
     display: none;
 }
 
+.react-select__single-value {
+    color: #bebebe !important;
+}
+
 .dropDownInput .react-select__control {
     background-color: transparent;
     font-size: 0.75rem;

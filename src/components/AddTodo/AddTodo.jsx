@@ -11,12 +11,13 @@ import { Link } from 'react-router-dom'
 
 
 import style from './addTodo.module.css'
+import axios from 'axios'
 const AddTodo = () => {
-
+// axios.post()
     return (
         <Overlay >
-            <div className={style.addNote}>
-                <div className={style.headerAddNote}>
+            <div className={style.addTodo}>
+                <div className={style.header}>
                     <h3>
                         Add todo :
                     </h3>
@@ -24,7 +25,7 @@ const AddTodo = () => {
 
                 </div>
                 <div className={style.formData}>
-                    <form className={style.formAddNote}>
+                    <form className={style.form}>
                         <Input label='Title (requier) :' htmlFor='title' />
                         <DropDownInput labelInput='Add Note :' />
                         <div className={style.btnAdd}>

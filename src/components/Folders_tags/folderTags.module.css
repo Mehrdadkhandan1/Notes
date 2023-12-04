@@ -9,6 +9,17 @@
     font-weight: bold;
 }
 
+.titleAndAdd a {
+    text-decoration: none;
+    color: #bebebe;
+
+}
+
+.titleAndAdd p {
+    text-transform: capitalize;
+
+}
+
 .listItems {
     padding-left: 0.5rem;
 }
@@ -21,17 +32,22 @@
 .listItems ul li {
     cursor: pointer;
     display: flex;
-    color: #fff;
     font-size: 0.9rem;
     align-items: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
 }
 
+.listItems ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
 .listItems ul li svg {
     fill: #fff;
     font-size: 1rem;
 }
+
 /* active Item */
 .aciveItem {
     width: 75%;
@@ -40,10 +56,11 @@
     background-color: #3E3F1C;
 }
 
-.aciveItem span {
+.aciveItem {
     color: #FFC812;
     font-weight: bold;
 }
+
 .aciveItem svg {
     fill: #FFC812 !important;
 }

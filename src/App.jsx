@@ -1,8 +1,4 @@
-import React from 'react'
-import Navbar from './components/Navbar/Navbar'
-import ShowNotes from './Pages/ShowNotes/ShowNotes'
-import TodoList from './components/TodoList/TodoList'
-import Overlay from './components/OverLay/OverLay'
+import React, { useContext } from 'react'
 import AddNote from './components/AddNote/AddNote'
 import ShowNote from './Pages/ShowNote/ShowNote'
 import SignUp from './Pages/SignUp/SignUp'
@@ -11,8 +7,14 @@ import Register from './Pages/SignUp/Register/Register'
 import Login from './Pages/SignUp/Login/Login'
 import Main from './Pages/Main/Main'
 import AddTodo from './components/AddTodo/AddTodo'
+import AddFolder from './components/AddFolder/AddFolder'
+import Loading from './Loading/Loading'
+// context
+import { LoadingContext } from './context/context'
 
 const App = () => {
+  const { open } = useContext(LoadingContext)
+  console.log(open)
   return (
     <div className='layout'>
       <Routes >
@@ -22,18 +24,21 @@ const App = () => {
           <Route path='login' element={<Login />} />
         </Route >
 
-        <Route path='showNote' element={<ShowNote />}>
+        <Route path='showNote/:id' element={<ShowNote />}>
           <Route path='addtodo' element={<AddTodo />} />
         </Route>
+
+
         <Route path='/' element={<Main />}>
           <Route path='addnote' element={<AddNote />} />
           <Route path='addtodo' element={<AddTodo />} />
-
+          <Route path='addfolder' element={<AddFolder title={'Folder'} />} />
+          <Route path='addtag' element={<AddFolder title={'Tag'} />} />
         </Route>
 
       </Routes>
 
-
+      {open && <Loading />}
 
     </div>
   )

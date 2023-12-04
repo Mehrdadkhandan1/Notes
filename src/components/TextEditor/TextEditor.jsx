@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 // import './MyResponsiveTextEditor.css'; // فایل استایل (اختیاری)
 
-const TextEditor = () => {
-  const [text, setText] = useState('');
+const TextEditor = ({ handelText }) => {
 
   const handleChange = (value) => {
-    setText(value);
+    handelText(value)
   };
 
   return (
     <div className="my-text-editor-container">
-      <ReactQuill  value={text} onChange={handleChange} className="my-text-editor" />
+      <ReactQuill  onChange={handleChange} className="my-text-editor" />
 
       {/* شما می‌توانید قسمت‌های دیگر از آرایهٔ ویژگی‌های react-quill را نیز اضافه کنید. */}
     </div>

@@ -10,7 +10,9 @@
     display: flex;
     justify-content: space-between;
 }
-
+.header a {
+    text-decoration: none;
+}
 .editBtn {
     display: flex;
     align-items: center;
@@ -41,4 +43,7 @@
 
 .editor {
     margin-top: 1rem;
+}
+.showTextNote{
+    margin:  1rem 2rem;
 }
