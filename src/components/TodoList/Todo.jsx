@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Todo = ({ data }) => {
     const [hasOpen, setHasOpen] = useState(false)
-    const { _id, title, notes,isCompleted } = data
+    const { _id, title, notes, isCompleted } = data
     return (
         <div onClick={(e) => {
             e.stopPropagation()

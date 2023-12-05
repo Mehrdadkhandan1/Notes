@@ -22,6 +22,13 @@ const reducer = (state, action) => {
                 ...state,
                 todos: action.data
             }
+        case "ADD_TODO":
+            const newTodos = state.todos
+            newTodos.push(action.data)
+            return {
+                ...state,
+                todos: newTodos
+            }
             break
         case "SET_FOLDERS":
             return {
@@ -56,6 +63,7 @@ export const LoadingContext = createContext()
 export const LoadingContextProvider = ({ children }) => {
     const [open, setOpen] = useState(false)
     const changeStatus = () => {
+        console.log('object')
         setOpen(prev => !prev)
     }
     return (

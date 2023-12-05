@@ -16,10 +16,9 @@ const DropDownInput = ({ labelInput, isMulti, value, changeValue, type }) => {
             <Select
                 onChange={(e) => {
                     if (isMulti) {
-                        console.log('s')
-                        const foldersId = []
-                        e.map(id => foldersId.push(id.value))
-                        changeValue(type, foldersId)
+                        const idItem = []
+                        e.map(id => idItem.push(id.value))
+                        changeValue(type, idItem)
                     }
                     else {
                         changeValue(type, e.value)

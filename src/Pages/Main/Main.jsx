@@ -19,11 +19,11 @@ const Main = () => {
     useEffect(() => {
         if (!id) {
             axios.all([
-                axios.get('/api/getallNotes'),
+                // axios.get('/api/getallNotes'),
                 axios.get('/api/getallTodos')
             ]).then((resp => {
-                dispatch({ type: 'SET_NOTES', data: resp[0].data })
-                dispatch({ type: 'SET_TODOS', data: resp[1].data })
+                // dispatch({ type: 'SET_NOTES', data: resp[0].data })
+                dispatch({ type: 'SET_TODOS', data: resp[0].data })
             }))
         }
 
