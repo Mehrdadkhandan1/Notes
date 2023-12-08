@@ -19,14 +19,13 @@ const Folders_tags = ({ title, icon, data }) => {
             <div className={`${style.listItems}`}>
                 <ul>
 
-                    {data && data.map(({ _id, name, title }) => {
+                    {data && data.map(({ _id, title }) => {
                         // کلاس اکتیو داره برای تغیر استایل 
                         return <li key={_id}>
                             {/* آیکون فولدر */}
                             {icon}
                             <Link>
-                                {name && name}
-                                {title && title}
+                                {title }
                             </Link>
                         </li>
                     })}

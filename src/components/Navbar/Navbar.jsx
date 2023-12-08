@@ -16,20 +16,7 @@ import { ContextNote } from '../../context/context'
 const Navbar = ({ openNav, setOpenNav }) => {
     // use state 
     const { state, dispatch } = useContext(ContextNote)
-    useEffect(() => {
-        // requst server 
-        axios.all([
-            // get folders name
-            axios.get('/api/getallFolders'),
-            // get tags name
-            axios.get('/api/getallTags')
-        ]).then(resp => {
-            // set state
-            dispatch({ type: 'SET_FOLDERS', data: resp[0].data })
-            dispatch({ type: 'SET_TAGS', data: resp[1].data })
-        })
 
-    }, [])
 
     return (
         <nav className={`${style.navbar} ${openNav && style.openNav}`}>

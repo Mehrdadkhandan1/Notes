@@ -4,10 +4,11 @@ import NoteBox from './NoteBox';
 
 
 const NotesBox = ({ data }) => {
+    console.log(data)
     return (
         <div className={style.notes}>
             {/* یادداشت ها */}
-            {data.length!==0 && data.map(note => {
+            {data && data.map(note => {
                 return <NoteBox key={note._id} note={note} />
             })}
         </div>

@@ -17,23 +17,28 @@ const Main = () => {
     }
 
     useEffect(() => {
-        if (!id) {
-            axios.all([
-                // axios.get('/api/getallNotes'),
-                axios.get('/api/getallTodos')
-            ]).then((resp => {
-                // dispatch({ type: 'SET_NOTES', data: resp[0].data })
-                dispatch({ type: 'SET_TODOS', data: resp[0].data })
-            }))
-        }
+        // requst server 
+        axios.all([
+            // get default folder
+            axios.get('/api/getDefaultFolder'),
+            // get todos
+            // get folders name
+            axios.get('/api/getallFolders'),
+            // get tags name
+            axios.get('/api/getallTags')
+        ]).then(resp => {
+            // set state
+            dispatch({ type: "SELECT_FOLDER", data: resp[0].data })
+            dispatch({ type: 'SET_FOLDERS', data: resp[1].data })
+            dispatch({ type: 'SET_TAGS', data: resp[2].data })
+        })
 
     }, [])
-
     return (
         <>
             <Navbar openNav={openNav} setOpenNav={toggleNav} />
             <div className='main-note'>
-                <ShowNotes setOpenNav={toggleNav} title={'title'} />
+                <ShowNotes  />
             </div>
             <TodoList />
             <Outlet />

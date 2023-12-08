@@ -30,7 +30,7 @@ const NoteBox = ({ note }) => {
             </span>
             {/* متن یادداشت */}
             <p className={style.noteText}>
-                {sliceText(content)}
+                {content ? sliceText(content) : 'No content'}
             </p>
 
         </div>

@@ -5,7 +5,7 @@ const NotesRow = ({ data }) => {
     console.log(data)
     return (
         <div className={style.notesRow}>
-            {data.length !== 0 && data.map(note => {
+            {data && data.map(note => {
                 return (
                     <NoteRow key={note._id} note={note} />
                 )

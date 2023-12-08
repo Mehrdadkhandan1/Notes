@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import style from './addNote.module.css'
 import { IoClose } from 'react-icons/io5'
 import Input from '../Input/Input'
 import DropDownInput from '../dropDownInput/dropDownInput'
 import SubmitBtn from '../SubmitBtn'
 import Overlay from '../OverLay/OverLay'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { ContextNote } from '../../context/context'
 
 
 
@@ -49,6 +50,7 @@ const AddNote = () => {
         })
     }, [])
 
+
     // function OnChange folder and tags 
     const changeOptions = (type, data) => {
         setDataForm(prev => {
@@ -68,12 +70,15 @@ const AddNote = () => {
             }
         })
     }
-
+    // Navigate
+    const navigate= useNavigate()
     // submited Form 
     const addNote = (e) => {
         e.preventDefault()
         axios.post('/api/addNote', dataForm).then(resp => {
-            console.log(resp)
+            if (resp.status === 200) {
+                navigate(`/showNote/${resp.data._id}`)
+            }
         })
     }
 

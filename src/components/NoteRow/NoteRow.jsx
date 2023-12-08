@@ -26,13 +26,12 @@ const NoteRow = ({ note }) => {
                             </span>
                         </div>
                         <p className={style.noteText}>
-                            {sliceText(content)}
+                            {content ? sliceText(content) : 'no content'}
                         </p>
                     </div>
                     {/* باکس دلیت */}
                     <div className={style.deleteNote}>
                         <RiDeleteBinLine />
-
                     </div>
                 </div>
             }

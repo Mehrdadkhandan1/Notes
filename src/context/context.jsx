@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useState } from 'react'
 
 // استیت اولیه
 const initialState = {
-    notes: [],
+    selectedFolder: {},
     folders: [],
     tags: [],
     todos: [],
@@ -12,11 +12,13 @@ const initialState = {
 const reducer = (state, action) => {
 
     switch (action.type) {
-        case "SET_NOTES":
+        case "SELECT_FOLDER":
+            console.log(state)
             return {
                 ...state,
-                notes: action.data
+                selectedFolder: action.data
             }
+
         case "SET_TODOS":
             return {
                 ...state,
