@@ -12,7 +12,6 @@ const iconAddTodo = <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.or
 const TodoList = () => {
     const { state, dispatch } = useContext(ContextNote)
     const { todos } = state
-    console.log(todos)
     return (
         <div className={style.todoList} >
             {/* هدر تودو لیست و آیکون ادد تودو */}

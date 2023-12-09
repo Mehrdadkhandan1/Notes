@@ -14,7 +14,6 @@ import { LoadingContext } from './context/context'
 
 const App = () => {
   const { open } = useContext(LoadingContext)
-  console.log(open)
   return (
     <div className='layout'>
       <Routes >

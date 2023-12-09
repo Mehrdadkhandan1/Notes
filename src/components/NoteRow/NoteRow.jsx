@@ -8,7 +8,11 @@ import axios from 'axios'
 // _id, title, content, tags, createdAt 
 const NoteRow = ({ note }) => {
     const { _id, title, content, tags, createdAt } = note
-    console.log(note)
+    const deleteNote = (note) => {
+        axios.post(`/api/deleteNote/${note}`).then(resp=>{
+            console.log(resp)
+        })
+    }
     return (
         <>
             {Object.keys(note).length &&
@@ -30,7 +34,9 @@ const NoteRow = ({ note }) => {
                         </p>
                     </div>
                     {/* باکس دلیت */}
-                    <div className={style.deleteNote}>
+                    <div onClick={() => {
+                        deleteNote(_id)
+                    }} className={style.deleteNote}>
                         <RiDeleteBinLine />
                     </div>
                 </div>

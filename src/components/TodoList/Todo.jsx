@@ -30,7 +30,6 @@ const Todo = ({ data }) => {
                     {title}
                 </p>
                 {
-                    console.log(data)
                 }
                 {/* نمایش دکمه لینک */}
                 {/* {notes.length ? <Link to='/shownote' className={style.linkBtn}>

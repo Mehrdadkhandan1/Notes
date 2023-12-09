@@ -13,7 +13,24 @@ const reducer = (state, action) => {
 
     switch (action.type) {
         case "SELECT_FOLDER":
-            console.log(state)
+            return {
+                ...state,
+                selectedFolder: action.data
+            }
+        case "DELETE_NOTE":
+
+            const newData = state.selectedFolder
+            const notes = newData.notes.filter(note => note._id !== action.data)
+
+            newData.notes = notes
+
+            return (
+                {
+                    ...state,
+                    selectedFolder: newData
+                }
+            )
+        case "SELECT_FOLDER":
             return {
                 ...state,
                 selectedFolder: action.data
@@ -65,7 +82,6 @@ export const LoadingContext = createContext()
 export const LoadingContextProvider = ({ children }) => {
     const [open, setOpen] = useState(false)
     const changeStatus = () => {
-        console.log('object')
         setOpen(prev => !prev)
     }
     return (

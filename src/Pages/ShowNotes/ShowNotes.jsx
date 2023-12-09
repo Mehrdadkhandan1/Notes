@@ -71,11 +71,16 @@ const ShowNotes = ({ setOpenNav }) => {
 
       {showRow ? <NotesRow data={data.notes} /> : <NotesBox data={data.notes} />}
 
-
-      {!Object.keys(data).length && <div className={style.vectorAddNote}>
-        <img src={addNoteVector} alt="Add note" />
-        <p>You have no note, you can add with <MdOutlinePostAdd /> </p>
-      </div>}
+      {console.log(data)}
+      {Object.keys(data).length !== 0 &&
+        <>
+          {data.notes.length === 0 &&
+            <div className={style.vectorAddNote}>
+              <img src={addNoteVector} alt="Add note" />
+              <p>You have no note, you can add with <MdOutlinePostAdd /> </p>
+            </div>}
+        </>
+      }
       {/*  */}
     </main>
   )

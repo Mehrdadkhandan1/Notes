@@ -7,13 +7,14 @@ import SubmitBtn from '../SubmitBtn'
 import Overlay from '../OverLay/OverLay'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { ContextNote } from '../../context/context'
+import { LoadingContext } from '../../context/context'
 
 
 
 
 
 const AddNote = () => {
+    const {changeStatus} = useContext(LoadingContext)
     // form data
     const [dataForm, setDataForm] = useState({
         title: '',
@@ -71,12 +72,17 @@ const AddNote = () => {
         })
     }
     // Navigate
-    const navigate= useNavigate()
+    const navigate = useNavigate()
     // submited Form 
     const addNote = (e) => {
+        // show loading
         e.preventDefault()
+        changeStatus()
         axios.post('/api/addNote', dataForm).then(resp => {
+            
             if (resp.status === 200) {
+                // close loading
+                changeStatus()
                 navigate(`/showNote/${resp.data._id}`)
             }
         })
