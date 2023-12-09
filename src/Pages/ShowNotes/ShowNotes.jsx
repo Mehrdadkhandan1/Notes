@@ -71,7 +71,6 @@ const ShowNotes = ({ setOpenNav }) => {
 
       {showRow ? <NotesRow data={data.notes} /> : <NotesBox data={data.notes} />}
 
-      {console.log(data)}
       {Object.keys(data).length !== 0 &&
         <>
           {data.notes.length === 0 &&

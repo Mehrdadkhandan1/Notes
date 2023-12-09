@@ -41,6 +41,11 @@ const reducer = (state, action) => {
                 ...state,
                 todos: action.data
             }
+        case "UPDATE_TODO":
+            const newState = state.todos
+            const getTodo = newState.findIndex(note => note._id === action.data._id)
+            newState[getTodo] = action.data
+            return (state)
         case "ADD_TODO":
             const newTodos = state.todos
             newTodos.push(action.data)

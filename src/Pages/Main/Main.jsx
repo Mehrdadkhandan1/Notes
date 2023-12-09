@@ -21,16 +21,18 @@ const Main = () => {
         axios.all([
             // get default folder
             axios.get('/api/getDefaultFolder'),
-            // get todos
             // get folders name
             axios.get('/api/getallFolders'),
             // get tags name
-            axios.get('/api/getallTags')
+            axios.get('/api/getallTags'),
+            // get todos
+            axios.get('/api/getallTodos')
         ]).then(resp => {
             // set state
             dispatch({ type: "SELECT_FOLDER", data: resp[0].data })
             dispatch({ type: 'SET_FOLDERS', data: resp[1].data })
             dispatch({ type: 'SET_TAGS', data: resp[2].data })
+            dispatch({ type: 'SET_TODOS', data: resp[3].data })
         })
 
     }, [])
@@ -38,7 +40,7 @@ const Main = () => {
         <>
             <Navbar openNav={openNav} setOpenNav={toggleNav} />
             <div className='main-note'>
-                <ShowNotes  />
+                <ShowNotes />
             </div>
             <TodoList />
             <Outlet />
