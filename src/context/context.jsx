@@ -41,6 +41,16 @@ const reducer = (state, action) => {
                 ...state,
                 todos: action.data
             }
+
+        case "DELETE_TODO":
+
+            const newDataTodo = state.todos
+            const todos = newDataTodo.filter(todo => todo._id !== action.data)
+            return {
+                ...state,
+                todos
+            }
+
         case "UPDATE_TODO":
             const newState = state.todos
             const getTodo = newState.findIndex(note => note._id === action.data._id)
