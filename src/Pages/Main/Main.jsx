@@ -20,7 +20,7 @@ const Main = () => {
         // requst server 
         axios.all([
             // get default folder
-            axios.get('/api/getDefaultFolder'),
+            axios.get('/api/getallNotes'),
             // get folders name
             axios.get('/api/getallFolders'),
             // get tags name
@@ -29,7 +29,7 @@ const Main = () => {
             axios.get('/api/getallTodos')
         ]).then(resp => {
             // set state
-            dispatch({ type: "SELECT_FOLDER", data: resp[0].data })
+            dispatch({ type: "SET_NOTES", data: resp[0].data })
             dispatch({ type: 'SET_FOLDERS', data: resp[1].data })
             dispatch({ type: 'SET_TAGS', data: resp[2].data })
             dispatch({ type: 'SET_TODOS', data: resp[3].data })

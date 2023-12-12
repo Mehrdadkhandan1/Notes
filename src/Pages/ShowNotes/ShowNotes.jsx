@@ -16,14 +16,13 @@ import { RiMenu2Line } from "react-icons/ri";
 // وکتور 
 import addNoteVector from './../../picture/addNote.svg'
 import { ContextNote } from '../../context/context'
-import axios from 'axios'
 
 
 
 const ShowNotes = ({ setOpenNav }) => {
   const { state, dispatch } = useContext(ContextNote)
   const [showRow, setShowRow] = useState(false)
-  const data = state.selectedFolder
+  const data = state.notes
   return (
     <main className={style.showNotes}>
       {/* هدر  */}
@@ -69,17 +68,13 @@ const ShowNotes = ({ setOpenNav }) => {
       {/* اسم فولدر */}
       <h3>{data.title}</h3>
 
-      {showRow ? <NotesRow data={data.notes} /> : <NotesBox data={data.notes} />}
+      {showRow ? <NotesRow data={data} /> : <NotesBox data={data} />}
 
-      {Object.keys(data).length !== 0 &&
-        <>
-          {data.notes.length === 0 &&
-            <div className={style.vectorAddNote}>
-              <img src={addNoteVector} alt="Add note" />
-              <p>You have no note, you can add with <MdOutlinePostAdd /> </p>
-            </div>}
-        </>
-      }
+      {data.length === 0 &&
+        <div className={style.vectorAddNote}>
+          <img src={addNoteVector} alt="Add note" />
+          <p>You have no note, you can add with <MdOutlinePostAdd /> </p>
+        </div>}
       {/*  */}
     </main>
   )

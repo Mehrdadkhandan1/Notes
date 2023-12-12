@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const SubmitBtn = ({ children }) => {
+const SubmitBtn = ({ children, disabled }) => {
     return (
-        <BtnSubmitted >
-            <button > {children} </button>
+        <BtnSubmitted  >
+            <button disabled={disabled} > {children} </button>
         </BtnSubmitted>
     )
 }
@@ -26,6 +26,10 @@ const BtnSubmitted = styled.div`
     outline: 0;
     border: 0;
     padding:  0.5rem 1rem;}
+    button:disabled {
+    background-color:#bebebe;
+    cursor: not-allowed;
+    }
 `
 
 export default SubmitBtn

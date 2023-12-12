@@ -10,9 +10,11 @@
     display: flex;
     justify-content: space-between;
 }
+
 .header a {
     text-decoration: none;
 }
+
 .editBtn {
     display: flex;
     align-items: center;
@@ -20,8 +22,13 @@
 
 .editBtn svg {
     font-size: 1.25rem;
-
+    transition: all ease-in-out 0.4s;
 }
+
+.editBtn svg:hover {
+    color: #FFC812;
+}
+
 
 .note {
     width: 70%;
@@ -43,7 +50,32 @@
 
 .editor {
     margin-top: 1rem;
+
 }
-.showTextNote{
-    margin:  1rem 2rem;
+
+.editor form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+.showTextNote {
+    margin: 1rem 2rem;
+}
+
+.vectorNoContent {
+    width: 50%;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    opacity: 0.7;
+    font-size: 1.5rem;
+}
+
+.vectorNoContent img {
+    width: 100%;
+
 }

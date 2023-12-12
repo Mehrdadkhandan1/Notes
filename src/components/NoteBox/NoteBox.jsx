@@ -44,7 +44,7 @@ const NoteBox = ({ note }) => {
             </span>
             {/* متن یادداشت */}
             <p className={style.noteText}>
-                {content ? sliceText(content) : 'No content'}
+                {content ? <div className={style.showTextNote} dangerouslySetInnerHTML={{ __html: sliceText(content) }} /> : 'No content'}
             </p>
 
         </div>

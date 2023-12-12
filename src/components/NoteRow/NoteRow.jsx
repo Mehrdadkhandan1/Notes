@@ -9,7 +9,7 @@ import axios from 'axios'
 const NoteRow = ({ note }) => {
     const { _id, title, content, tags, createdAt } = note
     const deleteNote = (note) => {
-        axios.post(`/api/deleteNote/${note}`).then(resp=>{
+        axios.post(`/api/deleteNote/${note}`).then(resp => {
             console.log(resp)
         })
     }
@@ -30,7 +30,9 @@ const NoteRow = ({ note }) => {
                             </span>
                         </div>
                         <p className={style.noteText}>
-                            {content ? sliceText(content) : 'no content'}
+                            {content ? <div className={style.showTextNote} dangerouslySetInnerHTML={{ __html: sliceText(content) }} /> : 'no content'}
+
+
                         </p>
                     </div>
                     {/* باکس دلیت */}
