@@ -29,6 +29,7 @@ const ShowNote = () => {
     useEffect(() => {
         // get note 
         axios.get(`/api/getNote/${id}`).then((resp => {
+            console.log(resp)
             if (resp.status === 200) {
                 // todos in note
                 dispatch({ type: "SET_TODOS", data: resp.data.todos })
@@ -43,10 +44,12 @@ const ShowNote = () => {
 
                 }
             }
-        }))
+        })).catch(err=>{
+            console.log(err)
+        })
     }, [])
-    
-    
+
+
     // submit change 
     const changeNote = (e) => {
         e.preventDefault()

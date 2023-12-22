@@ -4,6 +4,7 @@ import NoteBox from './NoteBox';
 
 
 const NotesBox = ({ data }) => {
+    console.log(data)
     return (
         <div className={style.notes}>
             {/* یادداشت ها */}

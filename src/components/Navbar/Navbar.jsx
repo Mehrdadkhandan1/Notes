@@ -8,8 +8,6 @@ import Folders_tags from '../Folders_tags/Folders_tags'
 // icon tags
 import { FaTags } from 'react-icons/fa6'
 // aaxios import 
-import axios from 'axios'
-
 import { useContext } from 'react'
 // state
 import { ContextNote } from '../../context/context'

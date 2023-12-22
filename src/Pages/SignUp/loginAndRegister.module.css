@@ -2,6 +2,7 @@
     width: 50%;
     padding: 0.5rem 1rem;
     transition: all ease-in-out 0.4s;
+    position: relative;
 
 }
 
@@ -15,6 +16,7 @@
 
 
 .parentForm {
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +24,8 @@
 
 .parentForm form {
     width: 80%;
-    margin-top: 2rem;
+    height: 100%;
+    
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -36,13 +39,18 @@
     align-items: center;
     position: relative;
     justify-content: center;
-    padding: 1.25rem 1.5rem;
+    width: 150px;
+    height: 150px;
+    padding: 0.25rem;
 }
 
 
 .photoProfile img {
-    width: 95px;
-    height: 95px;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    object-fit: cover;
 }
 
 
@@ -57,13 +65,14 @@
 
 .iconAddPhoto {
     position: absolute;
-    right: 1rem;
+    right: 0.25rem;
     display: flex;
     justify-content: center;
     align-items: center;
     outline: 0;
     border: 0;
     bottom: 0.25rem;
+
     background-color: #bebebe;
     border-radius: 50%;
     color: #1B1D1C;
@@ -80,7 +89,7 @@
 }
 
 .forgetAndRememeber {
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
 
@@ -124,34 +133,34 @@
 
 
 .btnSubmit {
-    width: 80%;
+    width: 100%;
     margin-top: 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
 }
+.btnSubmit a { 
+    color: #bebebe;
+}
 
 
 @media screen and (max-width:768px) {
     .register {
-
         padding: 1rem 1.25rem;
     }
 
-    .signup {
-        margin-top: 4rem;
-    }
+    
 
     .photoProfile {
-        padding: 1.5rem 1.5rem;
-
+        padding: 0.75rem 0.75rem;
+        width: 90px;
+        height: 90px;
     }
 
     .photoProfile img {
-        width: 85px;
-        height: 85px;
-    }
+        width: 100%;
+    }   
 
     .iconAddPhoto {
         right: 1rem;

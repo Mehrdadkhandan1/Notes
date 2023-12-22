@@ -9,6 +9,7 @@ export const AlertContextProvider = ({ children }) => {
 
     const showAlert = (type, message) => {
         console.log(type)
+        
         toast[type](message, {
             position: "bottom-right",
             autoClose: 5000,

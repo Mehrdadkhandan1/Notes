@@ -11,6 +11,7 @@ import AddFolder from './components/AddFolder/AddFolder'
 import Loading from './Loading/Loading'
 // context
 import { LoadingContext } from './context/context'
+import ForgetPasswordPage from './Pages/ForgetPassord/ForgetPasswordPage'
 
 const App = () => {
   const { open } = useContext(LoadingContext)
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/signup' element={<SignUp />}>
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />
+          <Route path='forgetPassword' element={<ForgetPasswordPage />} />
         </Route >
 
         <Route path='showNote/:id' element={<ShowNote />}>

@@ -12,7 +12,6 @@ const Todo = ({ data }) => {
     const { state, dispatch } = useContext(ContextNote)
     const [hasOpen, setHasOpen] = useState(false)
     const { _id, title, note, isCompleted } = data
-
     // done todo 
     const doneTodo = () => {
 
