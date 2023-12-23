@@ -6,6 +6,9 @@ import axios from 'axios'
 import { LoadingContext } from '../../../context/context'
 import { useLocalStorage } from '../../../hooks/useLocalStorage'
 import { AlertContext } from '../../../components/Alert/Alert'
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom'
+
 const inputs = [
     { name: 'email', type: 'email', label: 'Email' },
     { name: 'password', type: 'password', label: 'Password' }
@@ -24,6 +27,7 @@ const Login = () => {
     // hook localstorage 
     const [token, setToken] = useLocalStorage('token')
 
+    const navigate = useNavigate()
 
     const changeValue = (e) => {
         // validate value 
@@ -55,16 +59,21 @@ const Login = () => {
         }).then(resp => {
             // check Status code 
             if (resp.status === 200) {
-                const t = decode(resp.data.data)
-                console.log(t)
-                console.log(resp)
+                const token = jwtDecode(resp.data.data)
                 // set Token in localStorage
                 setToken(resp.data.data)
                 // stop loading
                 changeStatus()
-                // alert success loagin
-                showAlert('success', resp.data.message)
-
+                // check confirm email 
+                if (token.user.isConfirmed) {
+                    // alert success loagin
+                    showAlert('success', resp.data.message)
+                }
+                else {
+                    showAlert('warning', `${resp.data.message} , but you did not confirm the email`)
+                }
+                navigate('/')
+                
             }
         }).catch(err => {
             changeStatus()

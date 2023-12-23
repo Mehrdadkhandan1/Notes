@@ -34,7 +34,9 @@ const Main = () => {
 
             // get folders
             const folders = await axios.get('/api/getallFolders', {
-                userId: '657c6f5719afb7a9b7694c75'
+                headers: {
+                    "token": JSON.parse(localStorage.getItem('token'))
+                }
             }).catch(err => handelErr(err))
             dispatch({ type: 'SET_FOLDERS', data: folders.data.data })
             // get tags 
