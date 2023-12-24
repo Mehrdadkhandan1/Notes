@@ -33,11 +33,7 @@ const Main = () => {
             dispatch({ type: "SET_NOTES", data: notes.data.data })
 
             // get folders
-            const folders = await axios.get('/api/getallFolders', {
-                headers: {
-                    "token": JSON.parse(localStorage.getItem('token'))
-                }
-            }).catch(err => handelErr(err))
+            const folders = await axios.get('/api/getallFolders').catch(err => handelErr(err))
             dispatch({ type: 'SET_FOLDERS', data: folders.data.data })
             // get tags 
             const tags = await axios.get('/api/getallTags').catch(err => handelErr(err))

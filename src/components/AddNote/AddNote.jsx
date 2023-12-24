@@ -7,53 +7,58 @@ import SubmitBtn from '../SubmitBtn'
 import Overlay from '../OverLay/OverLay'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { LoadingContext } from '../../context/context'
+import { ContextNote, LoadingContext } from '../../context/context'
 
 
 
 
 
 const AddNote = () => {
+    const { state, dispatch } = useContext(ContextNote)
     const { changeStatus } = useContext(LoadingContext)
     // form data
     const [dataForm, setDataForm] = useState({
         title: '',
         folderId: '',
         tags: [],
+        todos:[]
     })
     //  folders and tags  
     const [folder_Tag, setFolder_tag] = useState({
         allFolders: [],
         allTags: []
     })
-    // get folders and tags from api
+    // get folders and tags from state
     useEffect(() => {
-        axios.all([
-            axios.get('/api/getallFolders'),
-            axios.get('/api/getallTags')
-        ]).then(resp => {
-
-            const allFolders = []
-            const allTags = []
-            resp[0].data.map(option => {
-                allFolders.push({ value: option._id, label: option.title })
-            })
-
-            resp[1].data.map(option => {
-                allTags.push({ value: option._id, label: option.title })
-            })
+        const folders = state.folders
+        const tags = state.tags
 
 
-            setFolder_tag({
-                allFolders,
-                allTags
-            })
+        const allFolders = []
+        const allTags = []
+        folders.map(option => {
+            allFolders.push({ value: option._id, label: option.title })
         })
-    }, [])
+
+        tags.map(option => {
+            allTags.push({ value: option._id, label: option.title })
+        })
+
+
+        setFolder_tag({
+            allFolders,
+            allTags
+        })
+
+
+
+    }, [state])
 
 
     // function OnChange folder and tags 
     const changeOptions = (type, data) => {
+        console.log(data)
+        
         setDataForm(prev => {
             return {
                 ...prev,
@@ -83,7 +88,7 @@ const AddNote = () => {
             if (resp.status === 200) {
                 // close loading
                 changeStatus()
-                navigate(`/showNote/${resp.data._id}`)
+                navigate(`/showNote/${resp.data.data._id}`)
             }
         })
     }
@@ -92,10 +97,10 @@ const AddNote = () => {
 
 
 
-
+console.log(dataForm)
     return (
         <Overlay>
-            <div onClick={() => { e.stopPropagation() }} className={style.addNote}>
+            <div className={style.addNote}>
                 <div className={style.headerAddNote}>
                     <h3>
                         Add Note :

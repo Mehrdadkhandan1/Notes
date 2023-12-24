@@ -18,10 +18,12 @@ const DropDownInput = ({ labelInput, isMulti, value, changeValue, type }) => {
                     if (isMulti) {
                         const idItem = []
                         e.map(id => idItem.push(id.value))
-                        changeValue(type, idItem)
+                        changeValue(`${type}Id`, idItem)
                     }
                     else {
-                        changeValue(type, e.value)
+                    console.log(e)
+
+                        changeValue(`${type}Id`, e.value)
                     }
                 }}
                 className="react-select-container"

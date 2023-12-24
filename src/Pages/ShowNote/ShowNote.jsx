@@ -32,14 +32,14 @@ const ShowNote = () => {
             console.log(resp)
             if (resp.status === 200) {
                 // todos in note
-                dispatch({ type: "SET_TODOS", data: resp.data.todos })
+                dispatch({ type: "SET_TODOS", data: resp.data.data.todos })
                 if (resp.data.content === undefined) {
                     setNote({
-                        ...resp.data,
+                        ...resp.data.data,
                         content: ''
                     })
                 } else {
-                    setNote(resp.data)
+                    setNote(resp.data.data)
                     changeText(resp.data.content)
 
                 }
@@ -115,7 +115,7 @@ const ShowNote = () => {
                             }
                         </div>
                     </section>
-                    <TodoList />
+                    <TodoList />    
                     <Outlet />
                 </div>
             }

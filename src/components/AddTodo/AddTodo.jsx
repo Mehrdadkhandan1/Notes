@@ -17,8 +17,8 @@ import { ContextNote, LoadingContext } from '../../context/context'
 const AddTodo = () => {
     const [dataTodo, setDataTodo] = useState({
         title: '',
-        noteId: null,
-        isCompleted: false
+        isCompleted: true,
+        noteId: ''
     })
     // all notes in dropdown
     const [notes, setNotes] = useState([])
@@ -31,33 +31,41 @@ const AddTodo = () => {
 
     useEffect(() => {
         // get notes
-        axios.get('/api/getallNotes').then(resp => {
-            const notesArr = []
-            resp.data.map(note => {
-                notesArr.push({
-                    label: note.title,
-                    value: note._id
-                })
+        const notesArr = []
+        const notes = state.notes
+        notes.map(note => {
+            notesArr.push({
+                label: note.title,
+                value: note._id
             })
-            // set state
-            setNotes(notesArr)
         })
-    }, [])
+        // set state
+        setNotes(notesArr)
+    }, [state])
 
     // add todo 
     const submitedForm = (e) => {
         e.preventDefault()
         console.log(dataTodo)
+        // show Loading
         changeStatus()
-        axios.post('/api/addTodo', dataTodo).then(resp => {
-            // show Loading
-            if (resp.status === 200) {
-                dispatch({ type: 'ADD_TODO', data: resp.data })
+        axios.post('/api/addTodo', {
+            title: dataTodo.title,
+            noteId : dataTodo.noteId,
+            isCompleted: dataTodo.isCompleted
+        }).then(resp => {
+            console.log(resp)
+            if (resp.status === 201) {
+                dispatch({ type: 'ADD_TODO', data: resp.data.data })
                 // hide loading
-                navigate('/')
                 changeStatus()
+                navigate('/')
 
             }
+        }).catch(err => {
+            console.log(err)
+            changeStatus()
+
         })
     }
 
@@ -75,10 +83,11 @@ const AddTodo = () => {
         setDataTodo(prev => {
             return {
                 ...prev,
-                note: value
+                noteId: value
             }
         })
     }
+    console.log(dataTodo)
 
 
     return (
