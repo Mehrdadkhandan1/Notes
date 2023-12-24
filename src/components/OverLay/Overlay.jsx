@@ -8,6 +8,7 @@ const Overlay = ({ children }) => {
             if (e.target.className === 'overlay') {
                 navigate('..', { relative: true })
             }
+            console.log('object')
         }} className='overlay'>
             {children}
         </div>
