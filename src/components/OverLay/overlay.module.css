@@ -1,5 +1,6 @@
 .overlay {
     position: fixed;
+    max-width: 1280px;
     width: 100%;
     height: 100%;
     background-color: #0c0e0c65;

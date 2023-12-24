@@ -18,7 +18,7 @@ const AddNote = () => {
     // form data
     const [dataForm, setDataForm] = useState({
         title: '',
-        folder: '',
+        folderId: '',
         tags: [],
     })
     //  folders and tags  
