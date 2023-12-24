@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import { ContextNoteProvider, LoadingContextProvider } from './context/context.jsx'
 import { AlertContextProvider } from './components/Alert/Alert.jsx'
-import { useLocalStorage } from './hooks/useLocalStorage.jsx'
 
 // axios contfig
 

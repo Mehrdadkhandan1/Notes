@@ -14,7 +14,7 @@ import { LoadingContext } from '../../context/context'
 
 
 const AddNote = () => {
-    const {changeStatus} = useContext(LoadingContext)
+    const { changeStatus } = useContext(LoadingContext)
     // form data
     const [dataForm, setDataForm] = useState({
         title: '',
@@ -79,7 +79,7 @@ const AddNote = () => {
         e.preventDefault()
         changeStatus()
         axios.post('/api/addNote', dataForm).then(resp => {
-            
+
             if (resp.status === 200) {
                 // close loading
                 changeStatus()
@@ -95,7 +95,7 @@ const AddNote = () => {
 
     return (
         <Overlay>
-            <div className={style.addNote}>
+            <div onClick={() => { e.stopPropagation() }} className={style.addNote}>
                 <div className={style.headerAddNote}>
                     <h3>
                         Add Note :

@@ -1,8 +1,14 @@
 import React from 'react'
-import style from './overlay.module.css'
+import './overlay.css'
+import { useNavigate } from 'react-router-dom'
 const Overlay = ({ children }) => {
+    const navigate = useNavigate()
     return (
-        <div className={style.overlay}>
+        <div onClick={(e) => {
+            if (e.target.className === 'overlay') {
+                navigate('..', { relative: true })
+            }
+        }} className='overlay'>
             {children}
         </div>
     )
