@@ -1,37 +1,38 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from 'react'
 // استایل
-import style from "./showNotes.module.css";
+import style from './showNotes.module.css'
 
-import Search from "../../components/Search/Search";
+import Search from '../../components/Search/Search'
 // ایکون ها
-import { HiOutlineSquares2X2 } from "react-icons/hi2";
-import { PiRowsLight } from "react-icons/pi";
-import { BiSortUp, BiSortDown } from "react-icons/bi";
-import { MdOutlinePostAdd } from "react-icons/md";
-import NotesBox from "../../components/NoteBox/NotesBox";
-import NotesRow from "../../components/NoteRow/NotesRow";
-import { Link, useParams } from "react-router-dom";
+import { HiOutlineSquares2X2 } from 'react-icons/hi2'
+import { PiRowsLight } from 'react-icons/pi'
+import { BiSortUp, BiSortDown } from 'react-icons/bi'
+import { MdOutlinePostAdd } from 'react-icons/md'
+import NotesBox from '../../components/NoteBox/NotesBox'
+import NotesRow from '../../components/NoteRow/NotesRow'
+import { Link, useParams } from 'react-router-dom'
 import { RiMenu2Line } from "react-icons/ri";
 
-// وکتور
-import addNoteVector from "./../../picture/addNote.svg";
-import { ContextNote } from "../../context/context";
+// وکتور 
+import addNoteVector from './../../picture/addNote.svg'
+import { ContextNote } from '../../context/context'
+
+
 
 const ShowNotes = ({ setOpenNav }) => {
-  const { state, dispatch } = useContext(ContextNote);
-  const [showRow, setShowRow] = useState(false);
-  const data = state.notes;
+  const { state, dispatch } = useContext(ContextNote)
+  const [showRow, setShowRow] = useState(false)
+  const data = state.notes
   return (
     <main className={style.showNotes}>
       {/* هدر  */}
       <header className={style.headerNotes}>
         <div className={style.menuNav}>
           {/* toggle navbar */}
-          <RiMenu2Line
-            onClick={() => {
-              setOpenNav();
-            }}
-          />
+          <RiMenu2Line onClick={() => {
+            setOpenNav()
+          }} />
+
         </div>
         {/* سرچ باکس */}
         <Search />
@@ -39,14 +40,12 @@ const ShowNotes = ({ setOpenNav }) => {
         {/* دکمه ها  */}
         <div className={style.actionBtn}>
           {/* نمایش به صورت باکسی یا ردیفی */}
-          <div
-            onClick={() => {
-              setShowRow((prev) => !prev);
-            }}
-            className={style.actionIcon}
-          >
+          <div onClick={() => {
+            setShowRow(prev => !prev)
+          }} className={style.actionIcon}>
             {/* باکسی */}
             {showRow ? <HiOutlineSquares2X2 /> : <PiRowsLight />}
+
           </div>
 
           {/* مرتب سازی بر اساس زمان قدیم به جدید یا جدید به قدیم */}
@@ -55,10 +54,11 @@ const ShowNotes = ({ setOpenNav }) => {
             {/* <BiSortUp /> */}
           </div>
 
+
           {/* اضافه کردن نوت */}
           <div className={style.actionIcon}>
             {/* آیکون اضافه کردن نوت */}
-            <Link to="addnote">
+            <Link to='addnote'>
               <MdOutlinePostAdd />
             </Link>
           </div>
@@ -70,23 +70,14 @@ const ShowNotes = ({ setOpenNav }) => {
 
       {showRow ? <NotesRow data={data} /> : <NotesBox data={data} />}
 
-      {data.length === 0 && (
+      {data.length === 0 &&
         <div className={style.vectorAddNote}>
           <img src={addNoteVector} alt="Add note" />
-          <p>
-            You have no note, you can add with{" "}
-            <div className={style.actionIcon}>
-              {/* آیکون اضافه کردن نوت */}
-              <Link to="addnote">
-                <MdOutlinePostAdd />
-              </Link>
-            </div>{" "}
-          </p>
-        </div>
-      )}
+          <p>You have no note, you can add with <MdOutlinePostAdd /> </p>
+        </div>}
       {/*  */}
     </main>
-  );
-};
+  )
+}
 
-export default ShowNotes;
+export default ShowNotes

@@ -14,6 +14,12 @@ import { AlertContextProvider } from "./components/Alert/Alert.jsx";
 
 axios.defaults.baseURL = "http://localhost:3000/";
 
+axios.interceptors.request.use((request) => {
+  console.log(request);
+  request.headers.token = JSON.parse(localStorage.getItem("token"));
+  return request;
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AlertContextProvider>

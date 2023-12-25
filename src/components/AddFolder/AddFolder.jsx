@@ -42,9 +42,10 @@ const AddFolder = ({ title }) => {
             if (resp.status === 200) {
                 if (title === 'Folder') {
                     const copyState = state.folders
-                    copyState.push(resp.data)
+                    copyState.push(resp.data.data)
                     console.log(copyState)
                     dispatch({ type: 'SET_FOLDERS', data: copyState })
+                    console.log(copyState)
                 }
                 else {
                 
