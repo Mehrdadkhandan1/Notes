@@ -26,13 +26,16 @@ const ShowNote = () => {
     const { state, dispatch } = useContext(ContextNote)
     // loading 
     const { changeStatus } = useContext(LoadingContext)
+    const [todos, setTodos] = useState([])
+
+
+
     useEffect(() => {
         // get note 
         axios.get(`/api/getNote/${id}`).then((resp => {
-            console.log(resp)
             if (resp.status === 200) {
                 // todos in note
-                dispatch({ type: "SET_TODOS", data: resp.data.data.todos })
+                // dispatch({ type: "SET_TODOS", data: resp.data.data.todos })
                 if (resp.data.content === undefined) {
                     setNote({
                         ...resp.data.data,
@@ -43,12 +46,22 @@ const ShowNote = () => {
                     changeText(resp.data.content)
 
                 }
+
             }
-        })).catch(err=>{
+            // filter todos in state
+            const todos = []
+            
+            state.todos.map((todoState) => {
+            
+                resp.data.data.todos.map(todo => {
+                    todo === todoState._id && todos.push(todoState)
+                })
+                setTodos(todos)
+            })
+        })).catch(err => {
             console.log(err)
         })
-    }, [])
-
+    }, [state])
 
     // submit change 
     const changeNote = (e) => {
@@ -115,7 +128,7 @@ const ShowNote = () => {
                             }
                         </div>
                     </section>
-                    <TodoList />    
+                    <TodoList todos={todos} />
                     <Outlet />
                 </div>
             }

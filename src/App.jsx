@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AddNote from './components/AddNote/AddNote'
 import ShowNote from './Pages/ShowNote/ShowNote'
 import SignUp from './Pages/SignUp/SignUp'
@@ -10,10 +10,43 @@ import AddTodo from './components/AddTodo/AddTodo'
 import AddFolder from './components/AddFolder/AddFolder'
 import Loading from './Loading/Loading'
 // context
-import { LoadingContext } from './context/context'
+import { ContextNote, LoadingContext } from './context/context'
 import ForgetPasswordPage from './Pages/ForgetPassord/ForgetPasswordPage'
+import axios from 'axios'
+
+
+
+function handelErr(err) {
+  return { data: { data: [], message: err.message } }
+
+}
 
 const App = () => {
+  const { state, dispatch } = useContext(ContextNote)
+
+  useEffect(() => {
+    const fetchData = async () => {
+        // get notes
+        const notes = await axios.get('/api/getallNotes').catch(err => {
+            return { data: { data: [], message: err.message } }
+        })
+        dispatch({ type: "SET_NOTES", data: notes.data.data })
+
+        // get folders
+        const folders = await axios.get('/api/getallFolders').catch(err => handelErr(err))
+        dispatch({ type: 'SET_FOLDERS', data: folders.data.data })
+        // get tags 
+        const tags = await axios.get('/api/getallTags').catch(err => handelErr(err))
+        dispatch({ type: 'SET_TAGS', data: tags.data.data })
+
+        //
+        const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
+        dispatch({ type: 'SET_TODOS', data: todos.data.data })
+
+
+    }
+    fetchData()
+}, [])
   const { open } = useContext(LoadingContext)
   return (
     <div className='layout'>

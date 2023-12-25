@@ -17,7 +17,7 @@ import { ContextNote, LoadingContext } from '../../context/context'
 const AddTodo = () => {
     const [dataTodo, setDataTodo] = useState({
         title: '',
-        isCompleted: true,
+        isCompleted: false,
         noteId: ''
     })
     // all notes in dropdown

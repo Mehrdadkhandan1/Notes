@@ -9,9 +9,7 @@ const iconAddTodo = <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.or
     <path d="M20.6806 1.74109C21.1552 1.26658 21.7987 1 22.4698 1C23.1409 1 23.7844 1.26658 24.2589 1.74109C24.7335 2.2156 25 2.85918 25 3.53024C25 4.2013 24.7335 4.84487 24.2589 5.31938L12.9277 16.6506L8.15662 17.8434L9.34938 13.0724L20.6806 1.74109Z" stroke="#BEBEBE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 </svg>
 
-const TodoList = () => {
-    const { state, dispatch } = useContext(ContextNote)
-    const { todos } = state
+const TodoList = ({ todos }) => {
     return (
         <div className={style.todoList} >
             {/* هدر تودو لیست و آیکون ادد تودو */}
