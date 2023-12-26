@@ -8,7 +8,7 @@ const Search = () => {
             <label htmlFor="search-input">
                 <BiSearchAlt2 />
             </label>
-            <input placeholder='Search Notes...' type="text" name="search" id="search-input" />
+            <input placeholder='Search Notes...' type="search" name="search" id="search-input" />
         </div>
     )
 }

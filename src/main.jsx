@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <LoadingContextProvider>
         <ContextNoteProvider>
           <App />
-        </ContextNoteProvider>,
+        </ContextNoteProvider>
       </LoadingContextProvider>
     </AlertContextProvider>
   </BrowserRouter>

@@ -63,12 +63,14 @@ const ShowNote = () => {
         })
     }, [state])
 
+    console.log(note)
     // submit change 
     const changeNote = (e) => {
         e.preventDefault()
         // show Loading
         changeStatus()
         axios.put(`/api/updateNote/${id}`, {
+            ...note,
             content: text
         }).then(resp => {
 
