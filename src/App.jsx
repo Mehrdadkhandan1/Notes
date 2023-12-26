@@ -25,27 +25,12 @@ const App = () => {
   const { state, dispatch } = useContext(ContextNote)
 
   useEffect(() => {
-    const fetchData = async () => {
-        // get notes
-        const notes = await axios.get('/api/getallNotes').catch(err => {
-            return { data: { data: [], message: err.message } }
-        })
-        dispatch({ type: "SET_NOTES", data: notes.data.data })
-
-        // get folders
-        const folders = await axios.get('/api/getallFolders').catch(err => handelErr(err))
-        dispatch({ type: 'SET_FOLDERS', data: folders.data.data })
-        // get tags 
-        const tags = await axios.get('/api/getallTags').catch(err => handelErr(err))
-        dispatch({ type: 'SET_TAGS', data: tags.data.data })
-
+    const fetchTodos = async () => {
         //
         const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
         dispatch({ type: 'SET_TODOS', data: todos.data.data })
-
-
     }
-    fetchData()
+    fetchTodos()
 }, [])
   const { open } = useContext(LoadingContext)
   return (
