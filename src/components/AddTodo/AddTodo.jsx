@@ -111,7 +111,7 @@ const AddTodo = () => {
               type="text"
               change={changeTitle}
               value={dataTodo.title}
-              label="Title (requier) :"
+              label="Title (require) :"
               htmlFor="title"
             />
             <DropDownInput

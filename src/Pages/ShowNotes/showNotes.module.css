@@ -81,7 +81,11 @@ h3 {
     gap: 0.5rem;
     font-size: 1.25rem;
 }
-
+.vectorAddNote p a {
+    color: #fff;
+    font-size: larger;
+    text-align: center;
+}
 
 @media screen and (max-width: 768px) {
     .headerNotes {

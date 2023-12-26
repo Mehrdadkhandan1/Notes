@@ -1,66 +1,65 @@
 .foldersTags {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
 .titleAndAdd {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #ffc812;
 }
 
 .titleAndAdd a {
-    text-decoration: none;
-    color: #bebebe;
-
+  text-decoration: none;
+  color: #bebebe;
 }
 
 .titleAndAdd p {
-    text-transform: capitalize;
-
+  text-transform: capitalize;
 }
 
 .listItems {
-    padding-left: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 .listItems ul {
-    list-style: none;
-    margin-top: 0.75rem;
+  list-style: none;
+  margin-top: 0.75rem;
 }
 
 .listItems ul li {
-    cursor: pointer;
-    display: flex;
-    font-size: 0.9rem;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.9rem;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
 }
 
 .listItems ul li a {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 .listItems ul li svg {
-    fill: #fff;
-    font-size: 1rem;
+  fill: #fff;
+  font-size: 1rem;
 }
 
 /* active Item */
 .aciveItem {
-    width: 75%;
-    padding: 0.25rem;
-    border-radius: 0.25rem;
-    background-color: #3E3F1C;
+  width: 75%;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  background-color: #3e3f1c;
 }
 
 .aciveItem {
-    color: #FFC812;
-    font-weight: bold;
+  color: #ffc812;
+  font-weight: bold;
 }
 
 .aciveItem svg {
-    fill: #FFC812 !important;
+  fill: #ffc812 !important;
 }

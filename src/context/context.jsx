@@ -50,10 +50,11 @@ const reducer = (state, action) => {
             }
 
         case "UPDATE_TODO":
+            console.log(action.data)
             const newState = state.todos
             const getTodo = newState.findIndex(note => note._id === action.data._id)
             newState[getTodo] = action.data
-            return (state)
+            return ({...state})
         case "ADD_TODO":
             const newTodos = state.todos
             newTodos.push(action.data)
