@@ -8,12 +8,12 @@ import { ContextNote } from "../../context/context";
 
 const Main = () => {
 
-    
-function handelErr(err) {
+
+  function handelErr(err) {
     return { data: { data: [], message: err.message } }
-  
+
   }
-  
+
   useEffect(() => {
     const fetchData = async () => {
       // get notes
@@ -41,6 +41,7 @@ function handelErr(err) {
   const { state, dispatch } = useContext(ContextNote);
 
   const toggleNav = () => {
+    
     setOpenNav((prev) => !prev);
   };
 
@@ -48,7 +49,7 @@ function handelErr(err) {
     <>
       <Navbar openNav={openNav} setOpenNav={toggleNav} />
       <div className="main-note">
-        <ShowNotes />
+        <ShowNotes setOpenNav={toggleNav} />
       </div>
       <TodoList todos={state.todos} />
       <Outlet />

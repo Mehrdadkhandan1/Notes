@@ -11,7 +11,11 @@ const Todo = ({ data }) => {
     const { changeStatus } = useContext(LoadingContext)
     const { state, dispatch } = useContext(ContextNote)
     const [hasOpen, setHasOpen] = useState(false)
-    const { _id, title,  noteId, isCompleted } = data
+    const { _id, title, noteId, isCompleted } = data
+    const [showInput, setShowInput] = useState(false)
+    const [valueInputEdit, setValueInputEdit] = useState(title)
+
+
     // done todo 
     const doneTodo = () => {
 
@@ -19,7 +23,7 @@ const Todo = ({ data }) => {
         // show loading 
         changeStatus()
         // send requset 
-        axios.put(`/api/updateTodo/${_id}`,{
+        axios.put(`/api/updateTodo/${_id}`, {
             ...data,
             isCompleted: check
         }).then(resp => {
@@ -31,15 +35,20 @@ const Todo = ({ data }) => {
             if (resp.status === 200) {
                 // close Loading
                 changeStatus()
-                dispatch({ type: "UPDATE_TODO", data: newData  })
+                dispatch({ type: "UPDATE_TODO", data: newData })
             }
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         })
     }
 
-    const editTodo = (id)=>{
-        console.log(id)
+    const editTodo = () => {
+        axios.put(`/api/updateTodo/${_id}`, {
+            ...data,
+            title: valueInputEdit
+        }).then(resp => {
+            
+        })
     }
 
     const deleteTodo = () => {
@@ -78,10 +87,10 @@ const Todo = ({ data }) => {
                     }
                 </div>
                 <p>
-                    {title}
+                    <input onClick={(e) => e.stopPropagation()} className={style.editTodoInput} onChange={(e) => setValueInputEdit(e.target.value)} type="text" name="" value={valueInputEdit} />
                 </p>
-                {
-                }
+
+
                 {/* نمایش دکمه لینک */}
                 {noteId ? <Link to={`/shownote/${noteId}`} className={style.linkBtn}>
                     <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,19 +105,23 @@ const Todo = ({ data }) => {
                     e.stopPropagation()
                     deleteTodo()
                 }} className={style.deleteTodo}> <RiDeleteBin7Line /> Remove </button>
+
                 {/* ادیت */}
-
-                <button onClick={(e) => {
-                    e.stopPropagation()
-                    editTodo(_id)
-                }} className={style.editTodo} >
-                    <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.2728 2.98294L13.0171 4.72637M12.3945 1.44704L7.67807 6.16344C7.43438 6.40679 7.26818 6.71684 7.20042 7.05451L6.76477 9.23524L8.9455 8.79876C9.28315 8.73123 9.5928 8.5657 9.83657 8.32193L14.553 3.60553C14.6947 3.4638 14.8071 3.29555 14.8838 3.11037C14.9605 2.92519 15 2.72672 15 2.52628C15 2.32585 14.9605 2.12738 14.8838 1.9422C14.8071 1.75702 14.6947 1.58877 14.553 1.44704C14.4112 1.30531 14.243 1.19288 14.0578 1.11618C13.8726 1.03948 13.6742 1 13.4737 1C13.2733 1 13.0748 1.03948 12.8896 1.11618C12.7045 1.19288 12.5362 1.30531 12.3945 1.44704Z" stroke="#BEBEBE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        <path d="M13.3531 10.8823V13.3529C13.3531 13.7898 13.1795 14.2087 12.8706 14.5176C12.5618 14.8265 12.1428 15 11.706 15H2.64708C2.21024 15 1.7913 14.8265 1.48242 14.5176C1.17353 14.2087 1 13.7898 1 13.3529V4.29402C1 3.85719 1.17353 3.43825 1.48242 3.12936C1.7913 2.82047 2.21024 2.64694 2.64708 2.64694H5.11769" stroke="#BEBEBE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-
-                    Edit
-                </button>
+                {
+                    !showInput ? <button onClick={(e) => {
+                        e.stopPropagation()
+                        editTodo()
+                    }} className={style.btnSubmitedEdit}> submit </button> : <button onClick={(e) => {
+                        e.stopPropagation()
+                        editTodo(_id)
+                    }} className={style.editTodo} >
+                        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.2728 2.98294L13.0171 4.72637M12.3945 1.44704L7.67807 6.16344C7.43438 6.40679 7.26818 6.71684 7.20042 7.05451L6.76477 9.23524L8.9455 8.79876C9.28315 8.73123 9.5928 8.5657 9.83657 8.32193L14.553 3.60553C14.6947 3.4638 14.8071 3.29555 14.8838 3.11037C14.9605 2.92519 15 2.72672 15 2.52628C15 2.32585 14.9605 2.12738 14.8838 1.9422C14.8071 1.75702 14.6947 1.58877 14.553 1.44704C14.4112 1.30531 14.243 1.19288 14.0578 1.11618C13.8726 1.03948 13.6742 1 13.4737 1C13.2733 1 13.0748 1.03948 12.8896 1.11618C12.7045 1.19288 12.5362 1.30531 12.3945 1.44704Z" stroke="#BEBEBE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            <path d="M13.3531 10.8823V13.3529C13.3531 13.7898 13.1795 14.2087 12.8706 14.5176C12.5618 14.8265 12.1428 15 11.706 15H2.64708C2.21024 15 1.7913 14.8265 1.48242 14.5176C1.17353 14.2087 1 13.7898 1 13.3529V4.29402C1 3.85719 1.17353 3.43825 1.48242 3.12936C1.7913 2.82047 2.21024 2.64694 2.64708 2.64694H5.11769" stroke="#BEBEBE" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        Edit
+                    </button>
+                }
             </div>
 
         </div >

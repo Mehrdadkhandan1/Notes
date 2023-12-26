@@ -26,9 +26,6 @@ body,
   margin: auto;
 }
 
-#root {
-  padding: 20px;
-}
 
 .layout {
   display: flex;
