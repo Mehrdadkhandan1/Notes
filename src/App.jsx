@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AddNote from './components/AddNote/AddNote'
 import ShowNote from './Pages/ShowNote/ShowNote'
 import SignUp from './Pages/SignUp/SignUp'
@@ -10,11 +10,23 @@ import AddTodo from './components/AddTodo/AddTodo'
 import AddFolder from './components/AddFolder/AddFolder'
 import Loading from './Loading/Loading'
 // context
-import { LoadingContext } from './context/context'
+import { ContextNote, LoadingContext } from './context/context'
 import ForgetPasswordPage from './Pages/ForgetPassword/ForgetPasswordPage'
-// import ForgetPasswordPage from './Pages/ForgetPassord/ForgetPasswordPage'
+import axios from 'axios'
 
 const App = () => {
+  const {state,dispatch} = useContext(ContextNote) 
+  useEffect(() => {
+    async function fetchTodo() {
+
+      // get Todos
+      const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
+      dispatch({ type: 'SET_TODOS', data: todos.data.data })
+      console.log(todos)
+
+    }
+    fetchTodo()
+  },[])
   const { open } = useContext(LoadingContext)
   return (
     <div className="layout">

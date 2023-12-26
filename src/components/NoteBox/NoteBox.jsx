@@ -13,9 +13,18 @@ const NoteBox = ({ note }) => {
     const { state, dispatch } = useContext(ContextNote)
     const [deleteIcon, setDeleteIcon] = useState(false)
     const { _id, title, content, tags, createdAt } = note
+    // delete note
     const deleteNote = (note) => {
+
+        changeStatus()
         axios.delete(`/api/deleteNote/${note}`).then(resp => {
-            dispatch({ type: 'DELETE_NOTE', data: resp.data._id })
+            // show loading 
+            if (resp.status === 200) {
+                dispatch({ type: 'DELETE_NOTE', data: resp.data.data._id })
+                // stop loading
+                changeStatus()
+
+            }
         })
     }
 
@@ -43,9 +52,9 @@ const NoteBox = ({ note }) => {
                 {translateDate(createdAt)}
             </span>
             {/* متن یادداشت */}
-            <p className={style.noteText}>
-                {content ? <div className={style.showTextNote} dangerouslySetInnerHTML={{ __html: sliceText(content) }} /> : 'No content'}
-            </p>
+            <div className={style.noteText}>
+                {content ? <p className={style.showTextNote} dangerouslySetInnerHTML={{ __html: sliceText(content) }} /> : 'No content'}
+            </div>
 
         </div>
     )
