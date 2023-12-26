@@ -1,1 +1,0 @@
-export const dataOption = [{ nameFolder: 'x', id: 40 }, { nameFolder: 'y', id: 41 }]

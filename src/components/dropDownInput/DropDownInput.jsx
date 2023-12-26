@@ -7,7 +7,6 @@ const animatedComponents = makeAnimated();
 
 
 const DropDownInput = ({ labelInput, isMulti, value, changeValue, type }) => {
-    console.log(value)
     return (
         <div className='dropDownInput'>
             <label htmlFor="">

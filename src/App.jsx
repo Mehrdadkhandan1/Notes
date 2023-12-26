@@ -11,7 +11,8 @@ import AddFolder from './components/AddFolder/AddFolder'
 import Loading from './Loading/Loading'
 // context
 import { LoadingContext } from './context/context'
-import ForgetPasswordPage from './Pages/ForgetPassord/ForgetPasswordPage'
+import ForgetPasswordPage from './Pages/ForgetPassword/ForgetPasswordPage'
+// import ForgetPasswordPage from './Pages/ForgetPassord/ForgetPasswordPage'
 
 const App = () => {
   const { open } = useContext(LoadingContext)
