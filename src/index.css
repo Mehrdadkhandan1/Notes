@@ -1,72 +1,71 @@
 /* وارد کردن فونت aleo */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-
 
 @font-face {
-    font-family: aleo;
-    src: url(./fonts/Aleo-VariableFont_wght.ttf);
+  font-family: aleo;
+  src: url(./fonts/Aleo-VariableFont_wght.ttf);
 }
-
 
 html,
 body,
 #root,
 .layout {
-    font-family: aleo;
-    background-color: #1B1D1C;
-    position: relative;
-    width: 100%;
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    color: #BEBEBE;
-    max-width: 1280px;
-    margin: auto;
+  font-family: aleo;
+  background-color: #1b1d1c;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  color: #bebebe;
+  margin: auto;
+}
+
+#root {
+  padding: 20px;
 }
 
 .layout {
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: start;
 }
 
 .main-note {
-    padding: 1rem 0;
-    width: 100%;
+  padding: 1rem 0;
+  width: 100%;
+  height: 100%;
 }
 
 html {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 @media screen and (max-width: 960px) {
-    html {
-        font-size: 14px;
-    }
+  html {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    html {
-        font-size: 10px;
-    }
+  html {
+    font-size: 10px;
+  }
 
-    .main-note {
-        padding: 0.5rem 0;
-        width: 70%;
-    }
-
+  .main-note {
+    padding: 0.5rem 0;
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 500px) {
-
-
-    .main-note {
-        padding: 0.5rem 0;
-        width: 100%;
-    }
-
+  .main-note {
+    padding: 0.5rem 0;
+    width: 100%;
+  }
 }
