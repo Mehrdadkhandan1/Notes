@@ -54,6 +54,7 @@ h4 {
 
 .todoBox {
   display: grid;
+  font-size: 0.75rem;
   grid-template-columns: 1.5rem auto 1rem;
   padding: 1rem 0;
   gap: 0.5rem;
@@ -159,10 +160,11 @@ h4 {
 
 .editTodoInput {
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 0;
+  border-bottom: 1px solid #fff;
   padding: 0.25rem;
-  border-radius: 0.25rem;
   outline: 0;
+  font-size: 0.75rem;
   color: #fff;
 }
 

@@ -27,6 +27,7 @@ const AddFolder = ({ title }) => {
     const value = e.target.value;
     setName(value);
   };
+  console.log(title)
 
     // submit form
     const addFolder = (e) => {
@@ -40,12 +41,11 @@ const AddFolder = ({ title }) => {
             if (resp.status === 200) {
                 if (title === 'Folder') {
                     const copyState = state.folders
-                    copyState.push(resp.data)
+                    copyState.push(resp.data.data)
                     console.log(copyState)
                     dispatch({ type: 'SET_FOLDERS', data: copyState })
                 }
                 else {
-                
                     const copyState = state.tags
                     dispatch({ type: 'SET_TAGS', data: copyState })
                 }
