@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import style from "./todoList.module.css";
 import { RiDeleteBin7Line } from "react-icons/ri";
@@ -8,11 +8,17 @@ import { ContextNote, LoadingContext } from "../../context/context";
 import { sliceText } from "../../tools/functions";
 
 const Todo = ({ data }) => {
+  const focusInput = useRef(null)
+  // loading
   const { changeStatus } = useContext(LoadingContext);
+  // notes data
   const { state, dispatch } = useContext(ContextNote);
+  // delete , edit page
   const [hasOpen, setHasOpen] = useState(false);
   const { _id, title, noteId, isCompleted } = data;
+  //  edit todo input
   const [showInput, setShowInput] = useState(false);
+  // value edit input
   const [valueInputEdit, setValueInputEdit] = useState(title);
 
   // done todo
@@ -43,6 +49,7 @@ const Todo = ({ data }) => {
       });
   };
 
+  // edit todo
   const editTodo = () => {
     // show loading
     changeStatus();
@@ -64,6 +71,7 @@ const Todo = ({ data }) => {
       });
   };
 
+  // delete todo
   const deleteTodo = () => {
     // show loading
     changeStatus();
@@ -75,6 +83,12 @@ const Todo = ({ data }) => {
       }
     });
   };
+
+  useEffect(() => {
+    if (showInput) {
+      focusInput.current.focus()
+    }
+  }, [showInput])
 
   return (
     <div
@@ -110,6 +124,7 @@ const Todo = ({ data }) => {
         <p>
           {showInput ? (
             <input
+              ref={focusInput}
               onClick={(e) => e.stopPropagation()}
               className={style.editTodoInput}
               onChange={(e) => setValueInputEdit(e.target.value)}
@@ -118,7 +133,7 @@ const Todo = ({ data }) => {
               value={valueInputEdit}
             />
           ) : (
-            sliceText(title,25)
+            sliceText(title, 25)
           )}
         </p>
 
