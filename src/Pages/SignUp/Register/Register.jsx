@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import style from '../loginAndRegister.module.css'
 import FormElemet from '../FormElement'
 import { validate } from '../../../tools/validateForms'
@@ -24,16 +24,21 @@ const Register = () => {
     const [profileUser, setProfile] = useState('')
     const [error, setError] = useState(dataKey)
     // context loading
+    const picture = useRef()
 
     const { changeStatus } = useContext(LoadingContext)
     // context alert 
     const { showAlert } = useContext(AlertContext)
-
+    // change route
     const navigate = useNavigate()
 
+    // change value inputs
     const changeValue = (e) => {
         // check input type 
+
         if (e.target.name === 'profileUser') {
+            // save file for upload picture in server
+            picture.current = e.target.files[0]
             // get file
             const file = e.target.files[0]
             if (file) {
@@ -76,31 +81,49 @@ const Register = () => {
 
     }
 
+
     const registerUser = (e) => {
         e.preventDefault()
-        // requst server
+        // show loading
         changeStatus()
+        // requst server
+
         axios.post('/api/register', {
             fullname: formData.fullname,
             password: formData.password,
             email: formData.email
         }).then(resp => {
-            // show loading
             // check status code
             if (resp.status === 201) {
                 // stop loading
                 changeStatus()
-
+                sendPicture(resp.data.data)
                 showAlert('success', resp.data.message)
                 console.log(resp)
                 navigate('/signup/login')
             }
         }).catch(err => {
             // stop loading
+            console.log(err)
+            showAlert('error', err)
             changeStatus()
-            showAlert('error', err.response.data.message)
         })
     }
+
+    const sendPicture = (token) => {
+        // create form data
+        let form = new FormData()
+        // set token 
+        form.append('token', token)
+        // set picture
+        form.append('file', picture.current)
+        
+        axios.post('/api/uploadImage', form).then(resp => {
+            console.log(resp)
+        })
+    }
+
+
     return (
         <div className={style.register}>
             <header>
