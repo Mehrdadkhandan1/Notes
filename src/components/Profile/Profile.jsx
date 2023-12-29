@@ -14,6 +14,7 @@ const Profile = ({ setOpenNav }) => {
     const [user, setUser] = useState({})
     useEffect(() => {
         const token = localStorage.getItem('token')
+        console.log(JSON.parse(token))
         const user = decode(token)
         console.log(user)
         setUser(user)

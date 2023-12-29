@@ -33,7 +33,6 @@ const ShowNote = () => {
     useEffect(() => {
         // get note 
         axios.get(`/api/getNote/${id}`).then((resp => {
-            console.log(resp)
             if (resp.status === 200) {
                 // todos in note
                 // dispatch({ type: "SET_TODOS", data: resp.data.data.todos })
@@ -46,7 +45,6 @@ const ShowNote = () => {
                 } else {
                     setNote(resp.data.data)
                     changeText(resp.data.data.content)
-
                 }
 
             }
@@ -78,6 +76,7 @@ const ShowNote = () => {
             if (resp.status === 200) {
                 //close loading 
                 changeStatus()
+                setNote(resp.data.data)
                 setEdit(prev => !prev)
 
             }

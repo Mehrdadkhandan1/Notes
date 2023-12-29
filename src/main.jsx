@@ -9,7 +9,7 @@ import { AlertContextProvider } from './components/Alert/Alert.jsx'
 
 // axios contfig
 
-axios.defaults.baseURL = 'http://localhost:3000/'
+axios.defaults.baseURL = 'http://localhost:3001/'
 
 axios.interceptors.request.use((request)=>{
   request.headers.token = JSON.parse(localStorage.getItem('token'))
