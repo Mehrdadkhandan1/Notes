@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AddNote from './components/AddNote/AddNote'
 import ShowNote from './Pages/ShowNote/ShowNote'
 import SignUp from './Pages/SignUp/SignUp'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, json } from 'react-router-dom'
 import Register from './Pages/SignUp/Register/Register'
 import Login from './Pages/SignUp/Login/Login'
 import Main from './Pages/Main/Main'
@@ -13,20 +13,24 @@ import Loading from './Loading/Loading'
 import { ContextNote, LoadingContext } from './context/context'
 import ForgetPasswordPage from './Pages/ForgetPassword/ForgetPasswordPage'
 import axios from 'axios'
-
+import { useAuth } from './hooks/useAuth'
 const App = () => {
-  const {state,dispatch} = useContext(ContextNote) 
+  const { state, dispatch } = useContext(ContextNote)
+  // check token
+  const [check, checkToken] = useAuth(JSON.parse(localStorage.getItem('token')))
   useEffect(() => {
     async function fetchTodo() {
-
       // get Todos
-      const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
-      dispatch({ type: 'SET_TODOS', data: todos.data.data })
-      console.log(todos)
-
+      console.log(check)
+      checkToken()
+      if (check) {
+        const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
+        dispatch({ type: 'SET_TODOS', data: todos.data.data })
+        console.log(todos)
+      }
     }
     fetchTodo()
-  },[])
+  }, [localStorage.getItem('token'), check])
   const { open } = useContext(LoadingContext)
   return (
     <div className="layout">

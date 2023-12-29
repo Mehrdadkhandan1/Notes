@@ -4,7 +4,6 @@ import FormElemet from "../FormElement";
 import { validate } from "../../../tools/validateForms";
 import axios from "axios";
 import { LoadingContext } from "../../../context/context";
-import { useLocalStorage } from "../../../hooks/useLocalStorage";
 import { AlertContext } from "../../../components/Alert/Alert";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +23,6 @@ const Login = () => {
   const { changeStatus } = useContext(LoadingContext);
   const { showAlert } = useContext(AlertContext);
   // hook localstorage
-  const [token, setToken] = useLocalStorage("token");
 
   const navigate = useNavigate();
 

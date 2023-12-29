@@ -55,14 +55,14 @@ const AddTodo = () => {
     // show Loading
     changeStatus();
     axios
-      .post("/api/addTodo",formRequst)
+      .post("/api/addTodo", formRequst)
       .then((resp) => {
         console.log(resp);
         if (resp.status === 201) {
           dispatch({ type: "ADD_TODO", data: resp.data.data });
           // hide loading
           changeStatus();
-          navigate("/");
+          navigate("..", { relative: true })
         }
       })
       .catch((err) => {

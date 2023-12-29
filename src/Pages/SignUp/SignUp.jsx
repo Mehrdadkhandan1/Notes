@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './signUp.module.css'
 import { BiLogIn, BiSolidUser } from 'react-icons/bi'
-import Register from './Register/Register'
-import Login from './Login/Login'
-import { Link, Outlet, Route, Routes } from 'react-router-dom'
+import { Link, Outlet, } from 'react-router-dom'
+import { useAuth } from '../../hooks/useAuth'
 const SignUp = () => {
+    const [check, checkToken] = useAuth(JSON.parse(localStorage.getItem('token')))
+    useEffect(() => {
+        checkToken()
+    }, [])
     return (
         <div className={style.signInPage}>
             <div className={style.logoAndRoutes}>
