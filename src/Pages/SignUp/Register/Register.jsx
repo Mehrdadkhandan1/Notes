@@ -21,10 +21,8 @@ const dataKey = {
 
 const Register = () => {
     const [formData, setFormData] = useState(dataKey)
-    const [profileUser, setProfile] = useState('')
     const [error, setError] = useState(dataKey)
     // context loading
-    const picture = useRef()
 
     const { changeStatus } = useContext(LoadingContext)
     // context alert 
@@ -34,52 +32,28 @@ const Register = () => {
 
     // change value inputs
     const changeValue = (e) => {
-        // check input type 
+        
 
-        if (e.target.name === 'profileUser') {
-            // save file for upload picture in server
-            picture.current = e.target.files[0]
-            // get file
-            const file = e.target.files[0]
-            if (file) {
-                const render = new FileReader()
-                // render file
-                render.onloadend = () => {
-                    // get url file
-                    const imageUrl = render.result
-                    // set state 
-                    setProfile(imageUrl)
-
-
-                }
-                render.readAsDataURL(file)
+        // check value
+        // validate value = object { value , error }
+        const validateData = validate(e.target.value, e.target.name)
+        // set errors
+        setError((prev) => {
+            return {
+                ...prev,
+                [e.target.name]: validateData.error
             }
+        })
 
-        }
-
-
-
-        else {
-            // check value
-            // validate value = object { value , error }
-            const validateData = validate(e.target.value, e.target.name)
-            // set errors
-            setError((prev) => {
-                return {
-                    ...prev,
-                    [e.target.name]: validateData.error
-                }
-            })
-
-            setFormData((prev) => {
-                return {
-                    ...prev,
-                    [e.target.name]: validateData.value
-                }
-            })
-        }
-
+        setFormData((prev) => {
+            return {
+                ...prev,
+                [e.target.name]: validateData.value
+            }
+        })
     }
+
+
 
 
     const registerUser = (e) => {
@@ -117,7 +91,7 @@ const Register = () => {
         form.append('token', token)
         // set picture
         form.append('file', picture.current)
-        
+
         axios.post('/api/uploadImage', form).then(resp => {
             console.log(resp)
         })
@@ -129,7 +103,7 @@ const Register = () => {
             <header>
                 <h3> Sign up </h3>
             </header>
-            <FormElemet profileUser={profileUser} error={error} valueInputs={formData} changeValue={changeValue} submited={registerUser} inputs={inputs} type='signup' />
+            <FormElemet  error={error} valueInputs={formData} changeValue={changeValue} submited={registerUser} inputs={inputs} type='signup' />
         </div>
     )
 }

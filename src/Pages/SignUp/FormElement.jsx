@@ -10,7 +10,7 @@ import { MdOutlineAddAPhoto } from 'react-icons/md'
 import profile from './../../picture/userProfile.png'
 import { Link } from 'react-router-dom'
 
-const FormElemet = ({ profileUser , inputs, type, valueInputs, changeValue, submited, error }) => {
+const FormElemet = ({ inputs, type, valueInputs, changeValue, submited, error }) => {
     const [checkBox, setCheckBox] = useState(false)
 
 
@@ -57,16 +57,7 @@ const FormElemet = ({ profileUser , inputs, type, valueInputs, changeValue, subm
 
         <div className={style.parentForm}>
             <form onSubmit={submited} >
-                {type === 'signup' &&
-                    <div className={style.photoProfile}>
-                        <img src={profileUser !== '' ? profileUser : profile} alt="add Photo" />
-
-                        <label htmlFor='profileUser' className={style.iconAddPhoto}>
-                            <MdOutlineAddAPhoto />
-
-                        </label>
-                        <input type="file" onChange={changeValue} name="profileUser" id="profileUser" accept="image/png, image/gif, image/jpeg" />
-                    </div>}
+              
                 {/* inputs */}
                 <div className={style.inputs}>
                     {inputs.map((input, index) => {
