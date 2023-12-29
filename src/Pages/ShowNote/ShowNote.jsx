@@ -33,26 +33,28 @@ const ShowNote = () => {
     useEffect(() => {
         // get note 
         axios.get(`/api/getNote/${id}`).then((resp => {
+            console.log(resp)
             if (resp.status === 200) {
                 // todos in note
                 // dispatch({ type: "SET_TODOS", data: resp.data.data.todos })
-                if (resp.data.content === undefined) {
+                console.log(resp.data.data.content)
+                if (resp.data.data.content === undefined) {
                     setNote({
                         ...resp.data.data,
                         content: ''
                     })
                 } else {
                     setNote(resp.data.data)
-                    changeText(resp.data.content)
+                    changeText(resp.data.data.content)
 
                 }
 
             }
             // filter todos in state
             const todos = []
-            
+
             state.todos.map((todoState) => {
-            
+
                 resp.data.data.todos.map(todo => {
                     todo === todoState._id && todos.push(todoState)
                 })
@@ -63,7 +65,6 @@ const ShowNote = () => {
         })
     }, [state])
 
-    console.log(note)
     // submit change 
     const changeNote = (e) => {
         e.preventDefault()

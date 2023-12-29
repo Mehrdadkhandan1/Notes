@@ -26,7 +26,6 @@ const App = () => {
       if (check) {
         const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
         dispatch({ type: 'SET_TODOS', data: todos.data.data })
-        console.log(todos)
       }
     }
     fetchTodo()
