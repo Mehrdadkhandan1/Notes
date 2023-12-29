@@ -1,34 +1,39 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // ایمپورت کردن پروفایل در صورتی که پروفایل نداشته باشه
 import profilePhoto from './../../picture/profile.jpg'
-import { FaLongArrowAltLeft } from "react-icons/fa";
 
- const sliceText = (text) => {
-    const maxLength = 10
-    const truncatedText = text.length > maxLength ?
-        text.slice(0, maxLength) + "..." : text;
-    return truncatedText
-}
+
 
 // استایل
 import style from './profile.module.css'
+import { sliceText } from '../../tools/functions'
+import { decode } from '../../tools/decodeToken'
 const userName = 'mehrdasasdsadsadasdasdd'
 
 const Profile = ({ setOpenNav }) => {
+    const [user, setUser] = useState({})
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        const user = decode(token)
+        console.log(user)
+        setUser(user)
+    }, [])
     return (
-        <div className={style.profile}>
-            {/* عکس پروفایل */}
-            <div className={style.photoProfile}>
-                <img src={profilePhoto} alt="profile" />
-            </div>
-            {/* یوزر نیم  */}
-            <div className={style.userName}>
-                <p>Hello</p>
-                <p> {sliceText(userName)} !</p>
-            </div>
-            <span onClick={setOpenNav} className={style.closeMenu}> x </span>
-        </div>
-
+        <>
+            {Object.keys(user).length &&
+                <div className={style.profile}>
+                    {/* عکس پروفایل */}
+                    <div className={style.photoProfile}>
+                        <img src={user.profile} alt="profile" />
+                    </div>
+                    {/* یوزر نیم  */}
+                    <div className={style.userName}>
+                        <p>Hello</p>
+                        <p> {sliceText(user.fullname, 12)} !</p>
+                    </div>
+                    <span onClick={setOpenNav} className={style.closeMenu}> x </span>
+                </div>}
+        </>
     )
 }
 

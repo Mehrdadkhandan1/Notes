@@ -27,17 +27,20 @@
 .userName {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 0.5rem;
     width: 90%;
-    
+
 }
-.closeMenu{
+
+.closeMenu {
     display: none;
 }
 
 
 .userName p:last-child {
     text-transform: capitalize;
+    font-size: 0.85rem;
 }
 
 
@@ -61,20 +64,23 @@
 
 @media screen and (max-width: 768px) {
     .profile {
-        
+
         gap: 0.5rem;
         font-size: 1rem;
         justify-content: space-between;
 
     }
+
     .photoProfile {
         padding: 0;
     }
+
     .photoProfile img {
         width: 30px;
         height: 30px;
     }
-    .closeMenu{
+
+    .closeMenu {
         display: flex;
         gap: 0.25rem;
         font-size: 1rem;
