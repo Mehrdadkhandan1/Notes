@@ -49,6 +49,12 @@ const App = () => {
           <Route path="addfolder" element={<AddFolder title={"Folder"} />} />
           <Route path="addtag" element={<AddFolder title={"Tag"} />} />
         </Route>
+        <Route path="/:id" element={<Main />}>
+          <Route path="addnote" element={<AddNote />} />
+          <Route path="addtodo" element={<AddTodo />} />
+          <Route path="addfolder" element={<AddFolder title={"Folder"} />} />
+          <Route path="addtag" element={<AddFolder title={"Tag"} />} />
+        </Route>
       </Routes>
 
       {open && <Loading />}

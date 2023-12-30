@@ -11,6 +11,7 @@ const Main = () => {
   const [openNav, setOpenNav] = useState(false);
   const { id } = useParams();
   const { state, dispatch } = useContext(ContextNote);
+  // auth user 
   const [check, setCheck] = useAuth(JSON.parse(localStorage.getItem("token")));
   function handelErr(err) {
     return { data: { data: [], message: err.message } };
@@ -19,11 +20,12 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       // get notes
-      const notes = await axios.get("/api/getallNotes").catch((err) => {
+  
+      const urlNotes = id ? `/api/getFolder/${id}` : '/api/getDefaultFolder'
+      const notes = await axios.get(urlNotes).catch((err) => {
         return { data: { data: [], message: err.message } };
       });
       dispatch({ type: "SET_NOTES", data: notes.data.data });
-
       // get folders
       const folders = await axios
         .get("/api/getallFolders")
@@ -38,8 +40,7 @@ const Main = () => {
     if (check) {
       fetchData();
     }
-    console.log(check);
-  }, [check]);
+  }, [check, id]);
 
   const toggleNav = () => {
     setOpenNav((prev) => !prev);

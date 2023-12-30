@@ -68,18 +68,21 @@ const ShowNotes = ({ setOpenNav }) => {
       {/* اسم فولدر */}
       <h3>{data.title}</h3>
 
-      {showRow ? <NotesRow data={data} /> : <NotesBox data={data} />}
-
-      {data.length === 0 && (
-        <div className={style.vectorAddNote}>
-          <img src={addNoteVector} alt="Add note" />
-          <p>
-            You have no note, you can add with{" "}
-            <Link to="addnote">
-              <MdOutlinePostAdd />
-            </Link>
-          </p>
-        </div>
+      {showRow ? <NotesRow data={data.notes} /> : <NotesBox data={data.notes} />}
+      {console.log(!Object.keys(data))}
+      {Object.keys(data).length && (
+        <>
+          {!data.notes.length &&
+            <div className={style.vectorAddNote}>
+              <img src={addNoteVector} alt="Add note" />
+              <p>
+                You have no note, you can add with{" "}
+                <Link to="addnote">
+                  <MdOutlinePostAdd />
+                </Link>
+              </p>
+            </div>}
+        </>
       )}
       {/*  */}
     </main>

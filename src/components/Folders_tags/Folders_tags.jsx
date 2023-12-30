@@ -24,7 +24,7 @@ const Folders_tags = ({ title, icon, data }) => {
                         return <li key={_id}>
                             {/* آیکون فولدر */}
                             {icon}
-                            <Link>
+                            <Link to={`/${_id}`}>
                                 {title }
                             </Link>
                         </li>

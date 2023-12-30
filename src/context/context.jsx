@@ -2,7 +2,7 @@ import React, { createContext, useReducer, useState } from 'react'
 
 // استیت اولیه
 const initialState = {
-    notes: [],
+    notes: {},
     folders: [],
     tags: [],
     todos: [],

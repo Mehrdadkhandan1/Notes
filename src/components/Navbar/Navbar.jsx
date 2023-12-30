@@ -15,7 +15,6 @@ const Navbar = ({ openNav, setOpenNav }) => {
     // use state 
     const { state, dispatch } = useContext(ContextNote)
 
-
     return (
         <nav className={`${style.navbar} ${openNav && style.openNav}`}>
             {/* profile component */}
