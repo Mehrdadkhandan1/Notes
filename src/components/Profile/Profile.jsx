@@ -8,13 +8,11 @@ import profilePhoto from './../../picture/profile.jpg'
 import style from './profile.module.css'
 import { sliceText } from '../../tools/functions'
 import { decode } from '../../tools/decodeToken'
-const userName = 'mehrdasasdsadsadasdasdd'
 
 const Profile = ({ setOpenNav }) => {
     const [user, setUser] = useState({})
     useEffect(() => {
-        const token = localStorage.getItem('token')
-        console.log(JSON.parse(token))
+        const token = JSON.parse(localStorage.getItem('token'))
         const user = decode(token)
         console.log(user)
         setUser(user)

@@ -4,9 +4,9 @@ import { BiLogIn, BiSolidUser } from 'react-icons/bi'
 import { Link, Outlet, } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
 const SignUp = () => {
-    const [check, checkToken] = useAuth(JSON.parse(localStorage.getItem('token')))
+    const [check] = useAuth(JSON.parse(localStorage.getItem('token')))
     useEffect(() => {
-        checkToken()
+        console.log(check)
     }, [])
     return (
         <div className={style.signInPage}>

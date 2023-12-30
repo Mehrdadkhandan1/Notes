@@ -17,12 +17,10 @@ import { useAuth } from './hooks/useAuth'
 const App = () => {
   const { state, dispatch } = useContext(ContextNote)
   // check token
-  const [check, checkToken] = useAuth(JSON.parse(localStorage.getItem('token')))
+  const [check] = useAuth(JSON.parse(localStorage.getItem('token')))
   useEffect(() => {
     async function fetchTodo() {
       // get Todos
-      console.log(check)
-      checkToken()
       if (check) {
         const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
         dispatch({ type: 'SET_TODOS', data: todos.data.data })

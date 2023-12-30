@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const SubmitBtn = ({ children, disabled }) => {
-    console.log(disabled)
     return (
         <BtnSubmitted  >
             <button disabled={disabled} > {children} </button>

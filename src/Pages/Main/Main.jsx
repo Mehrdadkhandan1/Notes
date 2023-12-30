@@ -5,13 +5,15 @@ import ShowNotes from "../ShowNotes/ShowNotes";
 import { Outlet, useParams } from "react-router-dom";
 import axios from "axios";
 import { ContextNote } from "../../context/context";
+import { useAuth } from "../../hooks/useAuth";
 
 const Main = () => {
-
-
+  const [openNav, setOpenNav] = useState(false);
+  const { id } = useParams();
+  const { state, dispatch } = useContext(ContextNote);
+  const [check, setCheck] = useAuth(JSON.parse(localStorage.getItem("token")));
   function handelErr(err) {
-    return { data: { data: [], message: err.message } }
-
+    return { data: { data: [], message: err.message } };
   }
 
   useEffect(() => {
@@ -33,15 +35,14 @@ const Main = () => {
         .catch((err) => handelErr(err));
       dispatch({ type: "SET_TAGS", data: tags.data.data });
     };
+    if(check){
     fetchData();
-  }, []);
 
-  const [openNav, setOpenNav] = useState(false);
-  const { id } = useParams();
-  const { state, dispatch } = useContext(ContextNote);
+    }
+    console.log(check)
+  }, [check]);
 
   const toggleNav = () => {
-    
     setOpenNav((prev) => !prev);
   };
 
