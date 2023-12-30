@@ -6,7 +6,7 @@ import React from 'react'
 
 // استایل 
 import style from './folderTags.module.css'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 const Folders_tags = ({ title, icon, data }) => {
     return (
         <div className={style.foldersTags}>
@@ -24,9 +24,11 @@ const Folders_tags = ({ title, icon, data }) => {
                         return <li key={_id}>
                             {/* آیکون فولدر */}
                             {icon}
-                            <Link to={`/${_id}`}>
-                                {title }
-                            </Link>
+                            <NavLink className={({ isActive, isPending }) => {
+                                return isPending ? "pending" : isActive ? style.active : ""
+                            }} to={`/${_id}`}>
+                                {title}
+                            </NavLink>
                         </li>
                     })}
                 </ul>

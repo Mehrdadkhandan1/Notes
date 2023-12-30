@@ -48,18 +48,18 @@
 }
 
 /* active Item */
-.aciveItem {
-  width: 75%;
+
+.listItems ul li:has(>a.active) {
   padding: 0.25rem;
   border-radius: 0.25rem;
   background-color: #3e3f1c;
-}
-
-.aciveItem {
   color: #ffc812;
   font-weight: bold;
 }
 
-.aciveItem svg {
+.active {}
+
+.listItems ul li:has(>a.active) svg {
+  min-width:  1rem;
   fill: #ffc812 !important;
 }

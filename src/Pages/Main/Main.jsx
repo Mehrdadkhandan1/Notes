@@ -20,12 +20,16 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       // get notes
-  
+
       const urlNotes = id ? `/api/getFolder/${id}` : '/api/getDefaultFolder'
-      const notes = await axios.get(urlNotes).catch((err) => {
-        return { data: { data: [], message: err.message } };
-      });
-      dispatch({ type: "SET_NOTES", data: notes.data.data });
+
+      if (id) {
+        const notes = await axios.get(urlNotes).catch((err) => {
+          return { data: { data: [], message: err.message } };
+        });
+        dispatch({ type: "SET_NOTES", data: notes.data.data });
+      }
+
       // get folders
       const folders = await axios
         .get("/api/getallFolders")
@@ -50,7 +54,10 @@ const Main = () => {
     <>
       <Navbar openNav={openNav} setOpenNav={toggleNav} />
       <div className="main-note">
-        <ShowNotes setOpenNav={toggleNav} />
+        {id ?
+          <ShowNotes setOpenNav={toggleNav} /> :
+          null
+        }
       </div>
       <TodoList todos={state.todos} />
       <Outlet />
