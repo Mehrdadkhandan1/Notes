@@ -35,11 +35,10 @@ const Main = () => {
         .catch((err) => handelErr(err));
       dispatch({ type: "SET_TAGS", data: tags.data.data });
     };
-    if(check){
-    fetchData();
-
+    if (check) {
+      fetchData();
     }
-    console.log(check)
+    console.log(check);
   }, [check]);
 
   const toggleNav = () => {

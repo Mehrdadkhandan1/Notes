@@ -1,7 +1,8 @@
 .addNote {
     background-color: #1B1D1B;
     width: 55%;
-    border-radius: 0.5rem;
+  max-width: 620px;
+  border-radius: 0.5rem;
     padding: 30px;
     transition: all ease-in-out 0.4s;
 }

@@ -1,6 +1,7 @@
 .addTodo {
   background-color: #1b1d1b;
   width: 55%;
+  max-width: 620px;
   border-radius: 0.5rem;
   padding: 30px;
   transition: all ease-in-out 0.4s;
