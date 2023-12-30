@@ -39,7 +39,7 @@ const NoteBox = ({ note }) => {
             {/* عنوان یادداشت */}
             <div className={style.noteTitle}>
                 <h4>
-                    <Link to={`showNote/${_id}`}>
+                    <Link to={`/showNote/${_id}`}>
                         {title}
                     </Link>
                 </h4>

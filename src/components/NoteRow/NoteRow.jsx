@@ -33,7 +33,7 @@ const NoteRow = ({ note }) => {
                     <div className={style.note}>
                         <div className={style.titleDate}>
                             <h4>
-                                <Link to={`shownote/${_id}`}>
+                                <Link to={`/shownote/${_id}`}>
                                     {title}
                                 </Link>
                             </h4>
