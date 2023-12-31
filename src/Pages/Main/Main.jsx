@@ -6,7 +6,10 @@ import { Outlet, useParams } from "react-router-dom";
 import axios from "axios";
 import { ContextNote } from "../../context/context";
 import { useAuth } from "../../hooks/useAuth";
+// css file 
+import './Main.css'
 
+import vector from './../../picture/selectFolder.svg'
 const Main = () => {
   const [openNav, setOpenNav] = useState(false);
   const { id } = useParams();
@@ -56,7 +59,12 @@ const Main = () => {
       <div className="main-note">
         {id ?
           <ShowNotes setOpenNav={toggleNav} /> :
-          null
+          <>
+            <div className='selectFolder'>
+              <img src={vector} alt="" />
+              <p>Please select a folder from the menu</p>
+            </div>
+          </>
         }
       </div>
       <TodoList todos={state.todos} />

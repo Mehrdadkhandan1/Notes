@@ -1,0 +1,13 @@
+.selectFolder{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 2rem;
+}
+.selectFolder img{
+    opacity: 0.7;
+    width: 50%;
+}
