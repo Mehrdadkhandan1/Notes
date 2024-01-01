@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AddNote from './components/AddNote/AddNote'
 import ShowNote from './Pages/ShowNote/ShowNote'
 import SignUp from './Pages/SignUp/SignUp'
-import { Route, Routes, json } from 'react-router-dom'
+import { Outlet, Route, Routes, json } from 'react-router-dom'
 import Register from './Pages/SignUp/Register/Register'
 import Login from './Pages/SignUp/Login/Login'
 import Main from './Pages/Main/Main'
@@ -14,6 +14,11 @@ import { ContextNote, LoadingContext } from './context/context'
 import ForgetPasswordPage from './Pages/ForgetPassword/ForgetPasswordPage'
 import axios from 'axios'
 import { useAuth } from './hooks/useAuth'
+import Dashboard from './Pages/Dashboard/Dashboard'
+import Navbar from './components/Navbar/Navbar'
+import TodoList from './components/TodoList/TodoList'
+import ChangePassword from './Pages/Dashboard/ChangePssword/ChangePassword'
+import ChangeUserData from './Pages/Dashboard/ChangeUserData/ChangeUserData'
 const App = () => {
   const { state, dispatch } = useContext(ContextNote)
   // check token
@@ -29,6 +34,14 @@ const App = () => {
     fetchTodo()
   }, [localStorage.getItem('token'), check])
   const { open } = useContext(LoadingContext)
+
+
+  const toggleNav = () => {
+    setOpenNav((prev) => !prev);
+  };
+  const [openNav, setOpenNav] = useState(false);
+
+
   return (
     <div className="layout">
       <Routes>
@@ -43,18 +56,27 @@ const App = () => {
           <Route path="addtodo" element={<AddTodo />} />
         </Route>
 
-        <Route path="/" element={<Main />}>
+        <Route path="/" element={
+          <>
+            <Navbar openNav={openNav} setOpenNav={toggleNav} />
+            <Main />
+            <TodoList todos={state.todos} />
+
+          </>
+        }>
+
+          <Route path=":id" element={<ShowNote />} />
           <Route path="addnote" element={<AddNote />} />
           <Route path="addtodo" element={<AddTodo />} />
           <Route path="addfolder" element={<AddFolder title={"Folder"} />} />
           <Route path="addtag" element={<AddFolder title={"Tag"} />} />
+          <Route path="dashboard" element={<Dashboard />}>
+            <Route path='password' element={<ChangePassword />} />
+            <Route path='informition' element={<ChangeUserData />} />
+
+          </Route>
         </Route>
-        <Route path="/:id" element={<Main />}>
-          <Route path="addnote" element={<AddNote />} />
-          <Route path="addtodo" element={<AddTodo />} />
-          <Route path="addfolder" element={<AddFolder title={"Folder"} />} />
-          <Route path="addtag" element={<AddFolder title={"Tag"} />} />
-        </Route>
+
       </Routes>
 
       {open && <Loading />}

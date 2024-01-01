@@ -28,16 +28,24 @@ const AddTodo = () => {
 
   useEffect(() => {
     // get notes
-    const notesArr = [];
-    const notes = state.notes;
-    notes.map((note) => {
-      notesArr.push({
-        label: note.title,
-        value: note._id,
+    
+    const allNotes = async () => {
+      let notesArr = [];  
+     const req =  await axios.get('/api/getallNotes')
+      console.log(notes)
+      req.data.data.map((note) => {
+        notesArr.push({
+          label: note.title,
+          value: note._id,
+        });
       });
-    });
-    // set state
-    setNotes(notesArr);
+      // set state
+      setNotes(notesArr);
+    }
+
+    allNotes()
+
+
   }, [state]);
 
   // add todo

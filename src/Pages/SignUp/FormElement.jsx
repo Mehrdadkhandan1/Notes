@@ -19,18 +19,12 @@ const FormElemet = ({ inputs, type, valueInputs, changeValue, submited, error })
         let checkValue = false
 
         for (const key in valueInputs) {
-            if (key === 'profileusername') {
+            if (valueInputs[key] === '') {
+                checkValue = true
+                break
+            }
+            else {
                 checkValue = false
-            } else {
-
-
-                if (valueInputs[key] === '') {
-                    checkValue = true
-                    break
-                }
-                else {
-                    checkValue = false
-                }
             }
         }
 
@@ -57,7 +51,7 @@ const FormElemet = ({ inputs, type, valueInputs, changeValue, submited, error })
 
         <div className={style.parentForm}>
             <form onSubmit={submited} >
-              
+
                 {/* inputs */}
                 <div className={style.inputs}>
                     {inputs.map((input, index) => {

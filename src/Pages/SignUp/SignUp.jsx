@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import style from './signUp.module.css'
 import { BiLogIn, BiSolidUser } from 'react-icons/bi'
-import { Link, Outlet, } from 'react-router-dom'
+import { Link, Outlet, useNavigate, } from 'react-router-dom'
 import { useAuth } from '../../hooks/useAuth'
+
 const SignUp = () => {
+    const navigate = useNavigate()
     const [check] = useAuth(JSON.parse(localStorage.getItem('token')))
     useEffect(() => {
-        console.log(check)
-    }, [])
+        check && navigate('/')
+    }, [check])
     return (
         <div className={style.signInPage}>
             <div className={style.logoAndRoutes}>

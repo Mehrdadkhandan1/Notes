@@ -4,5 +4,6 @@
     height: 100%;
     background-color: #0c0e0c65;
     display: grid;
+    overflow: scroll;
     place-items: center;
 }

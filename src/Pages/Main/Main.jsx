@@ -10,8 +10,7 @@ import { useAuth } from "../../hooks/useAuth";
 import './Main.css'
 
 import vector from './../../picture/selectFolder.svg'
-const Main = () => {
-  const [openNav, setOpenNav] = useState(false);
+const Main = ({ children }) => {
   const { id } = useParams();
   const { state, dispatch } = useContext(ContextNote);
   // auth user 
@@ -19,7 +18,6 @@ const Main = () => {
   function handelErr(err) {
     return { data: { data: [], message: err.message } };
   }
-
   useEffect(() => {
     const fetchData = async () => {
       // get notes
@@ -49,16 +47,12 @@ const Main = () => {
     }
   }, [check, id]);
 
-  const toggleNav = () => {
-    setOpenNav((prev) => !prev);
-  };
 
   return (
     <>
-      <Navbar openNav={openNav} setOpenNav={toggleNav} />
       <div className="main-note">
         {id ?
-          <ShowNotes setOpenNav={toggleNav} /> :
+          <ShowNotes /> :
           <>
             <div className='selectFolder'>
               <img src={vector} alt="" />
@@ -67,7 +61,6 @@ const Main = () => {
           </>
         }
       </div>
-      <TodoList todos={state.todos} />
       <Outlet />
     </>
   );

@@ -14,7 +14,7 @@ const useAuth = (token) => {
         .then((resp) => {
           if (resp.data.message === "successfull") {
             setCheck(true);
-            navigate("/");
+            // navigate("/");
           }
         })
         .catch((err) => {

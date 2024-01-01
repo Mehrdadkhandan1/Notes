@@ -8,6 +8,7 @@ import profilePhoto from './../../picture/profile.jpg'
 import style from './profile.module.css'
 import { sliceText } from '../../tools/functions'
 import { decode } from '../../tools/decodeToken'
+import { Link } from 'react-router-dom'
 
 const Profile = ({ setOpenNav }) => {
     const [user, setUser] = useState({})
@@ -22,9 +23,11 @@ const Profile = ({ setOpenNav }) => {
             {Object.keys(user).length &&
                 <div className={style.profile}>
                     {/* عکس پروفایل */}
-                    <div className={style.photoProfile}>
-                        <img src={user.profile} alt="profile" />
-                    </div>
+                    <Link to='/dashboard'>
+                        <div className={style.photoProfile}>
+                            <img src={user.profile} alt="profile" />
+                        </div>
+                    </Link>
                     {/* یوزر نیم  */}
                     <div className={style.userName}>
                         <p>Hello</p>
