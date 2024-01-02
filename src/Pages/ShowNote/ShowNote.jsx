@@ -9,6 +9,7 @@ import { RiPagesLine } from "react-icons/ri";
 // vector no content
 import vector from './../../picture/noContent.svg'
 
+
 import axios from 'axios'
 // context 
 import { ContextNote, LoadingContext } from '../../context/context'
@@ -27,7 +28,7 @@ const ShowNote = () => {
     // loading 
     const { changeStatus } = useContext(LoadingContext)
     const [todos, setTodos] = useState([])
-
+    const [inputTitle, openInputTitle] = useState(false)
 
 
     useEffect(() => {
@@ -82,6 +83,11 @@ const ShowNote = () => {
             }
         })
     }
+
+    const changeTitle = () => {
+        openInputTitle(prev => !prev)
+        console.log(note)
+    }
     return (
         <>
 
@@ -104,7 +110,18 @@ const ShowNote = () => {
                         </header>
                         {/* نمایش نوت */}
                         <div className={style.noteData}>
-                            <h2>{note.title}</h2>
+
+
+                            <div className={style.title}>
+                                {
+                                    inputTitle ?
+                                        <input className={style.changeTitle} type="text" value={note.title} />
+                                        :
+                                        <h2 onClick={changeTitle} >{note.title} </h2>
+                                }
+                                <span> <BiEdit /> </span>
+                            </div>
+
                             {edit ?
                                 <div className={style.editor}>
                                     <form onSubmit={changeNote}>

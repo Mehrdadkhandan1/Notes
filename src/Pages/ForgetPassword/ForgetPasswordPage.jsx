@@ -13,12 +13,18 @@ const ForgetPasswordPage = () => {
         setError(validateEmail.error)
         setEmail(e.target.value)
     }
+
+
+    const sendEmail=(e)=>{
+        e.preventDefault()
+        console.log(e)
+    }
     console.log(error)
     return (
         <div className={style.fogetPass}>
             <h3> forget Password </h3>
             <div className={style.formData}>
-                <form action="">
+                <form onSubmit={sendEmail}>
                     <Input name='email' value={email} change={changeValue} label='Enter your email : ' type='email' />
                     <SubmitBtn disabled={(error || email === '') ? true : false}> Send Email </SubmitBtn>
                 </form>

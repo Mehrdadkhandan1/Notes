@@ -71,6 +71,21 @@ export const validate = (value, name) => {
                 errorConfirmPassword = `dont use space!`
             }
             return { value: value, error: errorConfirmPassword }
+        case 'confirmPassword':
+            let confirmPassowrd = ''
+            if (vlf().emptyValue(value)) {
+                confirmPassowrd = 'please enter value'
+            }
+            // letter 8 character
+            if (vlf().letter8(value)) {
+                confirmPassowrd = 'letter 8 character'
+            }
+
+            // don't use space 
+            else if (vlf().haveSpace(value)) {
+                confirmPassowrd = `dont use space!`
+            }
+            return { value: value, error: confirmPassowrd }
         case 'email':
             let errorEmail = ''
             if (vlf().emptyValue(value)) {

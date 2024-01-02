@@ -39,8 +39,34 @@
     margin-top: 1.5rem;
 }
 
-.noteData h2 {
+.title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+}
+
+.title h2 {
     color: #FFC812;
+
+}
+
+.title span {
+    font-size: large;
+    color: #FFC812;
+    display: flex;
+    align-items: center;
+}
+
+.changeTitle {
+    outline: 0;
+    border: 0;
+    padding: 0.25rem;
+    background: transparent;
+    border-bottom: 1px solid #FFC812;
+    width: 50%;
+    color: #FFC812;
+    font-size: large;
 }
 
 .noteData p {

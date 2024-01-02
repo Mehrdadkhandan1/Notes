@@ -61,7 +61,9 @@ const FormData = ({ dataKey, inputsForm,submitForm }) => {
 
 
     return (
-        <form onSubmit={submitForm}>
+        <form onSubmit={(e)=>{
+            submitForm(e,formData)
+        }}>
             <div className={style.formDashboard}>
                 {inputsForm.map((input, index) => {
                     

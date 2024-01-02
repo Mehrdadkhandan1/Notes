@@ -1,21 +1,41 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import style from './../dashboard.module.css'
 import FormData from '../FormData'
+import { AlertContext } from '../../../components/Alert/Alert'
+import axios from 'axios'
+import { decode } from '../../../tools/decodeToken'
 const inputsForm = [
-    { name: 'password', type: 'password', label: 'Password' },
-    { name: 'newPassword', type: 'password', label: 'New Password' }]
+    { name: 'newPassword', type: 'password', label: 'New Password' },
+    { name: 'confirmPassword', type: 'password', label: 'Confirm New Password' }
+
+]
 
 const dataKey = {
-    password: '',
     newPassword: '',
+    confirmPassword: '',
 }
 
-const submitForm = (e) => {
-    e.preventDefault()
-    console.log('submit form')
-}
+
 
 const ChangePassword = () => {
+    const { showAlert } = useContext(AlertContext)
+    const submitForm = (e, data) => {
+        e.preventDefault()
+        if (data.newPassword !== data.confirmPassword) {
+            showAlert('error', 'Passwords do not match')
+        } else {
+            const userIDdecode = decode(JSON.parse(localStorage.getItem('token')))._id
+            console.log(userIDdecode)
+            axios.post('/api/change-password', {
+                email: userIDdecode,
+                password: data.newPassword
+            }).then(resp => {
+                console.log(resp)
+            })
+        }
+    }
+
+
     return (
         <div className={style}>
             <FormData submitForm={submitForm} dataKey={dataKey} inputsForm={inputsForm} />

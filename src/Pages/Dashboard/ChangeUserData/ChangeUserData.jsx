@@ -12,13 +12,18 @@ const dataKey = {
     email: '',
 }
 
+const submitForm = (e,data)=>{
+    console.log(e)
+    console.log(data)
+}
+
 const ChangeUserData = () => {
     return (
         <div className={style.informition}>
             <div className={style.profile}>
                 <UploadProfile />
             </div>
-            <FormData dataKey={dataKey} inputsForm={inputsForm} />
+            <FormData submitForm={submitForm} dataKey={dataKey} inputsForm={inputsForm} />
         </div>
     )
 }

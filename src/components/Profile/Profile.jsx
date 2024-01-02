@@ -23,7 +23,7 @@ const Profile = ({ setOpenNav }) => {
             {Object.keys(user).length &&
                 <div className={style.profile}>
                     {/* عکس پروفایل */}
-                    <Link to='/dashboard'>
+                    <Link to='/dashboard/informition'>
                         <div className={style.photoProfile}>
                             <img src={user.profile} alt="profile" />
                         </div>
