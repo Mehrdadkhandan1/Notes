@@ -8,17 +8,24 @@ import { Link, Outlet, useParams } from 'react-router-dom'
 import { RiPagesLine } from "react-icons/ri";
 // vector no content
 import vector from './../../picture/noContent.svg'
-
-
+import { FaCheck } from "react-icons/fa6";
 import axios from 'axios'
 // context 
 import { ContextNote, LoadingContext } from '../../context/context'
+
 import SubmitBtn from '../../components/SubmitBtn'
+import { AlertContext } from '../../components/Alert/Alert'
 const ShowNote = () => {
     // get id notes
     const { id } = useParams()
+    // open or close input
+    const [inputTitle, openInputTitle] = useState(false)
+    // input change title
+    const [valueTitle, changeTitle] = useState('')
     // notes 
-    const [note, setNote] = useState()
+    const [note, setNote] = useState('')
+    // todos
+    const [todos, setTodos] = useState([])
     // textEditor 
     const [text, changeText] = useState('')
     // text editor 
@@ -27,9 +34,8 @@ const ShowNote = () => {
     const { state, dispatch } = useContext(ContextNote)
     // loading 
     const { changeStatus } = useContext(LoadingContext)
-    const [todos, setTodos] = useState([])
-    const [inputTitle, openInputTitle] = useState(false)
-
+    //alert 
+    const {  showAlert } = useContext(AlertContext)
 
     useEffect(() => {
         // get note 
@@ -84,10 +90,30 @@ const ShowNote = () => {
         })
     }
 
-    const changeTitle = () => {
+    const openInput = () => {
         openInputTitle(prev => !prev)
-        console.log(note)
+        changeTitle(note.title)
     }
+
+
+    const changetitle = (e) => {
+        changeTitle(e.target.value)
+    }
+    const updateTitle = () => {
+        // show loading
+        changeStatus()
+        axios.put(`/api/updateNote/${id}`, {
+            ...note,
+            title: valueTitle
+        }).then(resp => {
+            if (resp.status === 200) {
+                changeStatus()
+                showAlert('success', 'Title updated successfully')
+                setNote(resp.data.data)
+            }
+        })
+    }
+
     return (
         <>
 
@@ -115,11 +141,17 @@ const ShowNote = () => {
                             <div className={style.title}>
                                 {
                                     inputTitle ?
-                                        <input className={style.changeTitle} type="text" value={note.title} />
+                                        <input onChange={changetitle} className={style.changeTitle} type="text" value={valueTitle} />
                                         :
-                                        <h2 onClick={changeTitle} >{note.title} </h2>
+                                        <h2  >{note.title} </h2>
                                 }
-                                <span> <BiEdit /> </span>
+                                <span onClick={openInput} >
+                                    {inputTitle ?
+                                        <FaCheck onClick={updateTitle} />
+                                        :
+                                        <BiEdit />
+                                    }
+                                </span>
                             </div>
 
                             {edit ?
