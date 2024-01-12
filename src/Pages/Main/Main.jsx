@@ -10,7 +10,7 @@ import { useAuth } from "../../hooks/useAuth";
 import './Main.css'
 
 import vector from './../../picture/selectFolder.svg'
-const Main = ({ children }) => {
+const Main = () => {
   const { id } = useParams();
   const { state, dispatch } = useContext(ContextNote);
   // auth user 
@@ -22,25 +22,13 @@ const Main = ({ children }) => {
     const fetchData = async () => {
       // get notes
 
-      const urlNotes = id ? `/api/getFolder/${id}` : '/api/getDefaultFolder'
-      console.log(id)
-      if (id) {
-        const notes = await axios.get(urlNotes).catch((err) => {
-          return { data: { data: [], message: err.message } };
-        });
-        dispatch({ type: "SET_NOTES", data: notes.data.data });
-      }
+      const urlNotes = `/api/getFolder/${id}`
+      const notes = await axios.get(urlNotes).catch((err) => {
+        return { data: { data: [], message: err.message } };
+      });
+      dispatch({ type: "SET_NOTES", data: notes.data.data });
 
-      // get folders
-      const folders = await axios
-        .get("/api/getallFolders")
-        .catch((err) => handelErr(err));
-      dispatch({ type: "SET_FOLDERS", data: folders.data.data });
-      // get tags
-      const tags = await axios
-        .get("/api/getallTags")
-        .catch((err) => handelErr(err));
-      dispatch({ type: "SET_TAGS", data: tags.data.data });
+
     };
     if (check) {
       fetchData();

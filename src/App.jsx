@@ -30,7 +30,18 @@ const App = () => {
       if (check) {
         const todos = await axios.get('/api/getallTodos').catch(err => handelErr(err))
         dispatch({ type: 'SET_TODOS', data: todos.data.data })
+        // get folders
+        const folders = await axios
+          .get("/api/getallFolders")
+          .catch((err) => handelErr(err));
+        dispatch({ type: "SET_FOLDERS", data: folders.data.data });
+        // get tags
+        const tags = await axios
+          .get("/api/getallTags")
+          .catch((err) => handelErr(err));
+        dispatch({ type: "SET_TAGS", data: tags.data.data });
       }
+
     }
     fetchTodo()
   }, [localStorage.getItem('token'), check])
