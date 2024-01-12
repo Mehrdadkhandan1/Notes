@@ -116,7 +116,7 @@ const ShowNote = () => {
 
     return (
         <>
-
+            {console.log(note)}
             {note &&
                 <div className={style.showNote}>
                     <section className={style.note}>

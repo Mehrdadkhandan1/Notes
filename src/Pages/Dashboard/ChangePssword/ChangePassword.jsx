@@ -24,11 +24,13 @@ const ChangePassword = () => {
         if (data.newPassword !== data.confirmPassword) {
             showAlert('error', 'Passwords do not match')
         } else {
-            const userIDdecode = decode(JSON.parse(localStorage.getItem('token')))._id
-            console.log(userIDdecode)
+            const email = decode(JSON.parse(localStorage.getItem('token'))).email
+            const oldPassword = decode(JSON.parse(localStorage.getItem('token'))).password
+            console.log(oldPassword)
             axios.post('/api/change-password', {
-                email: userIDdecode,
-                password: data.newPassword
+                email: email,
+                oldPasswordL: '',
+                newPassword: data.newPassword
             }).then(resp => {
                 console.log(resp)
             })

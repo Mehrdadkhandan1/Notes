@@ -52,7 +52,10 @@ const Main = ({ children }) => {
     <>
       <div className="main-note">
         {id ?
-          <ShowNotes /> :
+          <>
+            {children}
+          </>
+          :
           <>
             <div className='selectFolder'>
               <img src={vector} alt="" />
@@ -60,8 +63,8 @@ const Main = ({ children }) => {
             </div>
           </>
         }
+
       </div>
-      <Outlet />
     </>
   );
 };

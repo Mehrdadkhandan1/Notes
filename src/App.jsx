@@ -19,6 +19,7 @@ import Navbar from './components/Navbar/Navbar'
 import TodoList from './components/TodoList/TodoList'
 import ChangePassword from './Pages/Dashboard/ChangePssword/ChangePassword'
 import ChangeUserData from './Pages/Dashboard/ChangeUserData/ChangeUserData'
+import ShowNotes from './Pages/ShowNotes/ShowNotes'
 const App = () => {
   const { state, dispatch } = useContext(ContextNote)
   // check token
@@ -59,13 +60,15 @@ const App = () => {
         <Route path="/" element={
           <>
             <Navbar openNav={openNav} setOpenNav={toggleNav} />
-            <Main />
+            <Main>
+              <Outlet />
+            </Main>
             <TodoList todos={state.todos} />
 
           </>
         }>
 
-          <Route path=":id" element={<ShowNote />} />
+          <Route path=":id" element={<ShowNotes />} />
           <Route path="addnote" element={<AddNote />} />
           <Route path="addtodo" element={<AddTodo />} />
           <Route path="addfolder" element={<AddFolder title={"Folder"} />} />

@@ -36,6 +36,7 @@ const AddFolder = ({ title }) => {
         // show sppiner  
         changeStatus()
         const data = title === 'Folder' ? { title: name } : { title: name }
+        console.log(title)
         axios.post(`/api/add${title}`, data).then(resp => {
             console.log(resp)
             if (resp.status === 200) {

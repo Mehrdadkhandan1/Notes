@@ -3,21 +3,26 @@ import style from './forgetPassword.module.css'
 import Input from '../../components/Input/Input'
 import SubmitBtn from '../../components/SubmitBtn'
 import { validate } from '../../tools/validateForms'
+import axios from 'axios'
 const ForgetPasswordPage = () => {
     const [email, setEmail] = useState('')
     const [error, setError] = useState(false)
     const changeValue = (e) => {
         const validateEmail = validate(e.target.value, e.target.name)
         console.log(validateEmail.error)
-        
+
         setError(validateEmail.error)
         setEmail(e.target.value)
     }
 
 
-    const sendEmail=(e)=>{
+    const sendEmail = (e) => {
         e.preventDefault()
-        console.log(e)
+        axios.post('/api/send-reset-password', {
+            email: email
+        }).then(resp=>{
+            console.log(resp)
+        })
     }
     console.log(error)
     return (
