@@ -23,7 +23,7 @@ const Main = ({ children }) => {
       // get notes
 
       const urlNotes = id ? `/api/getFolder/${id}` : '/api/getDefaultFolder'
-
+      console.log(id)
       if (id) {
         const notes = await axios.get(urlNotes).catch((err) => {
           return { data: { data: [], message: err.message } };
@@ -50,21 +50,19 @@ const Main = ({ children }) => {
 
   return (
     <>
-      <div className="main-note">
-        {id ?
-          <>
-            {children}
-          </>
-          :
-          <>
-            <div className='selectFolder'>
-              <img src={vector} alt="" />
-              <p>Please select a folder from the menu</p>
-            </div>
-          </>
-        }
+      {id ?
+        <>
+          <ShowNotes />
+        </>
+        :
+        <>
+          <div className='selectFolder'>
+            <img src={vector} alt="" />
+            <p>Please select a folder from the menu</p>
+          </div>
+        </>
+      }
 
-      </div>
     </>
   );
 };

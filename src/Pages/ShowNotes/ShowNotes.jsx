@@ -58,7 +58,7 @@ const ShowNotes = ({ setOpenNav }) => {
           {/* اضافه کردن نوت */}
           <div className={style.actionIcon}>
             {/* آیکون اضافه کردن نوت */}
-            <Link to="addnote">
+            <Link to="/addnote">
               <MdOutlinePostAdd />
             </Link>
           </div>

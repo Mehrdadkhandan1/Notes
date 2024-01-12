@@ -60,15 +60,16 @@ const App = () => {
         <Route path="/" element={
           <>
             <Navbar openNav={openNav} setOpenNav={toggleNav} />
-            <Main>
+            <div className='main-note'>
               <Outlet />
-            </Main>
+            </div>
+
             <TodoList todos={state.todos} />
 
           </>
         }>
 
-          <Route path=":id" element={<ShowNotes />} />
+          <Route path=":id" element={<Main />} />
           <Route path="addnote" element={<AddNote />} />
           <Route path="addtodo" element={<AddTodo />} />
           <Route path="addfolder" element={<AddFolder title={"Folder"} />} />
