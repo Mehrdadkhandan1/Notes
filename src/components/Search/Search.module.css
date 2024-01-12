@@ -43,12 +43,44 @@
     border-top: 1px solid #BEBEBE;
     border-radius: 0 0 0.25rem 0.25rem;
     width: 100%;
-    min-height: 3rem;
+    overflow: scroll;
+    max-height: 200px;
     left: 0;
     top: 2rem;
     background: #262626;
 }
 
+.itemsResult {
+    margin: 1rem 0;
+    padding: 0.5rem;
+
+}
+
+.titleSearchResult {
+    padding: 0.5rem;
+    border-radius: 0.25rem 0.25rem 0 0;
+    background-color: #BEBEBE;
+    
+}
+.titleSearchResult a { 
+    color: #000;    
+    text-decoration: none;
+}
+
+.contentResult {
+    background-color: #fff;
+    padding: 0.5rem;
+    
+    border-radius:  0 0 0.25rem 0.25rem;
+
+}
+.noResult{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    text-decoration: underline;
+}
 @media screen and (min-width: 768px) {
     .search {
         padding: 0.5rem 0.75rem;
